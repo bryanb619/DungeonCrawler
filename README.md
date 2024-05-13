@@ -121,7 +121,6 @@ O único docente com quem foi entrado em contacto para discutir questões relaci
 
 * [Unicode Symbols](https://symbl.cc/en/unicode-table/)
 * [Digrama UML Mermaid](https://mermaid.js.org/syntax/classDiagram.html)
-* [_Mermaid Flowchart_](https://mermaid.js.org/syntax/flowchart.html)
 
 #### _API_
 * [_Arrays & Multidimensional Arrays_](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays)
