@@ -115,8 +115,6 @@ A Realização deste projeto consistiu essencialmente em pesquisa própria, conh
 
 O único docente com quem foi entrado em contacto para discutir questões relacionadas ao projeto, dúvidas, lógica e/ou eficiência do código foi ao professor Nuno Fachada.
 
--
-
 ### _Links_ de pesquisa utilizados para realização do projeto
 
 - [_Getters & Setters_](https://www.w3schools.com/cs/cs_properties.php)
