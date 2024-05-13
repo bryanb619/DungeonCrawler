@@ -4,12 +4,12 @@
 
 ### Elementos do grupo
 
-- xxx
+- Sónia Raposo 22000344
 - Steven Hall 22001753
   
 ### _Report_
 
-#### XXX
+#### Sónia
 
 - Código:
   - _Bug fixing_
