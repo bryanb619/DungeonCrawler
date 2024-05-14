@@ -39,10 +39,12 @@
 
 classDiagram
 
-    Game    <.. Program 
-    Game    *--  Piece
-    Game    --> Board
-    Game    ..> FileDirectory
+
+  HealthPotion  <|..   Item  
+
+
+  class Item 
+  <<abstract>> Item 
 
 ```
 
