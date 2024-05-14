@@ -1,0 +1,10 @@
+Enemies:
+
+    - skeleton (fácil)
+    - Orcs (médio)
+    -  ? (difícil) 
+
+Items:
+   -  Health
+   - ?
+
