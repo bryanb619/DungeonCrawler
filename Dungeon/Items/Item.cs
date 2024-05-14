@@ -4,7 +4,7 @@ namespace Dungeon.Items
 {
     public abstract class Item
     {
-        public virtual void Interact()
+        public virtual void Interact(){}
         
     }
 }
