@@ -1,7 +1,7 @@
 namespace Dungeon.Items
 {
     /// <summary>
-    /// Abstract representation of an object(in-game item) 
+    /// Abstract representation of an object (in-game item) 
     /// </summary>
     public abstract class Item
     {
