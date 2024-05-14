@@ -44,25 +44,6 @@ classDiagram
     Game    --> Board
     Game    ..> FileDirectory
 
-    class Program{
-     
-    }
-    class Piece{
-    }
-
-    
-    class Board{
-        
-
-    }
-    class Game{
-
-    }
-
-    class FileDirectory{
-
-    }
-    
 ```
 
 ## Referências
