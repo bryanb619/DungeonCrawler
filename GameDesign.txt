@@ -1,10 +1,29 @@
-Enemies:
+Player
+    hp: 1000
+    attack: 75 (pode ir ate 100 com item heretic rage)
+    move: norte, sul, este, oeste
+    check item: o jogador quando entra numa room com item tem a chance de checkar ou nao. se checkar, automaticamente usa o item, para evitar complicaçoes como ter inventario
 
-    - skeleton (fácil)
-    - Orcs (médio)
-    -  ? (difícil) 
+Enemy:
+    
+traveler
+      hp: 100
+      attack: 50
 
-Items:
-   -  Health
-   - ?
+    
+chaos
+      hp: 250
+      attack: 130
 
+    
+titan
+      hp: 350
+      attack: 90
+
+Items
+    
+Ivy's flask - 150 hp no player
+God's tear + 250 hp no player
+
+    
+se der, item opcional: Heretic's rage + 5 attack no player
