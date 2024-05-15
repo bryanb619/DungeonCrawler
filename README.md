@@ -40,11 +40,18 @@
 classDiagram
 
 
-  HealthPotion  <|..   Item  
+  Item         <|--     HealthPotion
+
+  Enemy        <|--     Traveler
+  Enemy        <|--     Chaos
+  Enemy        <|--     Titan 
 
 
   class Item 
   <<abstract>> Item 
+
+  class Enemy
+  <<abstract>> Enemy 
 
 ```
 
