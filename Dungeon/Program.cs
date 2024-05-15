@@ -16,14 +16,29 @@ namespace Dungeon
         /// <param name="args">Not used</param>
         private static void Main(string[] args)
         {
+            //Player class
 
             // EXAMPLE of HealthPotion
-            Item hp = new HealthPotion( 100 );
+            Item hp = new HealthPotion(100);
 
             if(hp is HealthPotion)
             {
                 hp.Interact();
+
+                
+
+                // player instance.Health += hp.Value
+
+                // para cada sala pode existir (no jogador uma lista que é auto limpa a cada saída de sala)
+                
+                
+                // Loop de ações ou combate
             }
+
+            /*
+
+
+            */
 
             
 
