@@ -25,7 +25,7 @@
 
             // Instantiate a view 
             // pass as param (game, room) 
-            View view = new View(game, room);
+            IView view = new View(game, room);
             
             // Run the game         
             game.Start(view);
