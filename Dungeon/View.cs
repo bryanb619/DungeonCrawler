@@ -4,18 +4,19 @@ namespace Dungeon
 {
     public class View : IView
     {
-        private readonly Controller _controller;
+        private readonly Game _game;
 
         // TODO: Add Model reference
+        // private readonly
 
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="controller"></param>
-        public View(Controller controller) // Model model )
+        /// <param name="game"></param>
+        public View(Game game) // Model model )
         {
-            _controller = controller;
+            _game = game;
             // _model = model;
         }
 
