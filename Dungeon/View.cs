@@ -14,7 +14,7 @@ namespace Dungeon
         /// 
         /// </summary>
         /// <param name="game"></param>
-        public View(Game game) // Model model )
+        public View(Game game, Room room)
         {
             _game = game;
             // _model = model;
