@@ -10,9 +10,9 @@
         /// <summary>
         /// Entry point of the game.
         /// 3 instances are created: Model, Controller and View.
-        /// Model = Room class => represents Program logic. 
-        /// Controller = Game class => represents the game loop.
-        /// View = View class => represents the user interface (UI).
+        /// Model       = Room class => represents Program logic. 
+        /// Controller  = Game class => represents the game loop.
+        /// View        = View class => represents the user interface (UI).
         /// </summary>
         /// <param name="args">Not used</param>
         private static void Main(string[] args)
