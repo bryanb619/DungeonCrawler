@@ -31,6 +31,14 @@ namespace Dungeon
 
 
         /// <summary>
+        /// Interface Method.
+        /// Should be used to wait for a key to be pressed.
+        /// Like an event listener.
+        /// </summary>
+        void WaitForKey();
+
+
+        /// <summary>
         /// Interface method.
         /// Should be used to display final message.
         /// </summary>
