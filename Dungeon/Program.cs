@@ -1,7 +1,4 @@
-﻿using System;
-using Dungeon.Items;
-
-namespace Dungeon
+﻿namespace Dungeon
 {
     /// <summary>
     /// Represents the game entry point.
@@ -11,46 +8,27 @@ namespace Dungeon
     class Program
     {
         /// <summary>
-        /// 
+        /// Entry point of the game.
+        /// 3 instances are created: Model, Controller and View.
+        /// Model       = Room class => represents Program logic. 
+        /// Controller  = Game class => represents the game loop.
+        /// View        = View class => represents the user interface (UI).
         /// </summary>
         /// <param name="args">Not used</param>
         private static void Main(string[] args)
         {
-            //Player class
+            // Instantiate a room   (model)
+            Room room = new Room();
 
-            // EXAMPLE of HealthPotion
-            Item hp = new HealthPotion(100);
+            // Instantiate a game   (controller) 
+            Game game = new Game();
 
-            if(hp is HealthPotion)
-            {
-                hp.Interact();
-
-                
-
-                // player instance.Health += hp.Value
-
-                // para cada sala pode existir (no jogador uma lista que é auto limpa a cada saída de sala)
-                
-                
-                // Loop de ações ou combate
-            }
-
-            /*
-
-
-            */
-
+            // Instantiate a view 
+            // pass as param (game, room) 
+            IView view = new View(game, room);
             
-
-            // Instantiate a model
-
-            // Instantiate a view
-
-            // Instantiate a controller
-
-
-            // Run controller
-        
+            // Run the game         
+            game.Start(view);
         }
     }
 }
