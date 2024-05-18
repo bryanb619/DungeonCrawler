@@ -14,7 +14,7 @@ namespace Dungeon
         public Room[] Room { get; private set; }
 
 
-        private int playerPos = 0;
+        public int PlayerPos { get; private set; } = 0;
 
         int a = 0;
 
@@ -26,47 +26,43 @@ namespace Dungeon
             TestRooms("room1", new HealthPotion(), new Enemy("Chaos", 100, 10));
             TestRooms("room2", new HealthPotion(), new Enemy("Titan", 200, 15));
             TestRooms("Room3", new HealthPotion(), new Enemy("Chaos", 100, 10));
+            TestRooms("Room3", new HealthPotion(), new Enemy("Chaos", 100, 10));
+            
             
             Room = _room;
 
 
-            Dictionary<string, Room> exits = new Dictionary<string, Room>
-            {
-                { "E", Room[1] }
-            };
-
-            Dictionary<string, Room> exits2 = new Dictionary<string, Room>
-            {
-                { "W", Room[0] },
-                { "E", Room[2] }
-            };
+            _room[0].AddConnection(new Dictionary<string, Room> { 
+                { "E", _room[1] } });
 
 
-            _room[0].AddConnection(exits);
-
-            _room[1].AddConnection(exits2);
-
-
-            Console.WriteLine(
-                $"{_room[0].Description} { string.Join(", " , _room[0].Connections.Keys)}");
+            _room[1].AddConnection(new Dictionary<string, Room> { 
+                { "W", _room[0] }, 
+                { "E", _room[2] }    });
 
 
-         
-           //Console.WriteLine(_room[1].Description, _room[1].Connections.Keys);
+            _room[2].AddConnection(new Dictionary<string, Room> { 
+                { "W", _room[1] },
+                { "E", _room[3] }    });
 
-            /*
+            _room[3].AddConnection(new Dictionary<string, Room> { 
+                { "W", _room[2] },
+                {"N", _room[4]}    });
+
+                
+            //CreatePlayer();
+
             foreach (Room room in _room)
             {
-                Console.WriteLine(room.Description, room.Item, room.Enemy);
-            }~
-
-            */
-  
-            //CreatePlayer();
+                Console.WriteLine(room.Connections);
+            }
         }
 
 
-        private void TestRooms(string description, Item item, Enemy enemy)
+
+
+        private void TestRooms(
+            string description = "some room", Item item = null, Enemy enemy = null)
         {
 
             _room[a] = new Room(description, item, enemy);
@@ -133,14 +129,22 @@ namespace Dungeon
 
 
 
-        // Action methods from controller
+        // ------------- Action methods from controller ------------------------
 
 
-        public int UpdatePlayerPos()
+
+
+
+
+        // ------------------ Data manipulation --------------------------------
+        public void UpdatePlayerRoomPos()
         {
-            return playerPos;
+            PlayerPos++;
         }
 
+
+
+       
 
         /// <summary>
         /// 
@@ -149,7 +153,7 @@ namespace Dungeon
         /// <returns></returns>
         public bool canMove(string input)
         {   
-            return _room[playerPos].Connections.ContainsKey(input);
+            return _room[PlayerPos].Connections.ContainsKey(input);
         }
 
     
