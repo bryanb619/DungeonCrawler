@@ -1,5 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using Dungeon.Items;
+using Dungeon.Characters;
+
 
 namespace Dungeon
 {
@@ -10,24 +14,25 @@ namespace Dungeon
     public class Room
     {
 
+        // Room properties
+        public string Description { get; }
 
+        public Dictionary<string, Room> Connections { get;  }
 
+        public Item Item { get; }
 
-        public Room()
+        public Enemy Enemy { get; }
+
+        public Room(string description, Dictionary<string, Room> exits, Item item, Enemy enemy)
         {
 
             // string name, string description, List<Char> exits, Item item, Enemy enemy
-            //Name = name;
-            //Description = description;
-            //Exits = exits;
-            //Item = item;
-            //Enemy = enemy;
-
-            
+            Description = description;
+            Connections = exits;
+            Item = item;
+            Enemy = enemy;
         }
 
-
-      
         /// <summary>
         /// 
         /// </summary>
