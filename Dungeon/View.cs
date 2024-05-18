@@ -6,18 +6,17 @@ namespace Dungeon
     {
         private readonly Game _game;
 
-        // TODO: Add Model reference
-        // private readonly
+        private readonly Model _model;  
 
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="game"></param>
-        public View(Game game, Room[,] room)
+        public View(Game game, Model model)
         {
-            _game = game;
-            // _model = model;
+            _game   = game;
+            _model  = model;
         }
 
 
