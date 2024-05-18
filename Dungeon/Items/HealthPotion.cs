@@ -7,8 +7,13 @@ namespace Dungeon.Items
     /// </summary>
     public class HealthPotion : Item
     {
+
+
         // Read-only property
         public int Health { get; }
+
+
+        public override string Name { get; }
 
         /// <summary>
         /// Constructor for HealthPotion class
@@ -17,8 +22,9 @@ namespace Dungeon.Items
         /// <param name="health">
         /// Value to be assigned to Health property (read-only)
         /// </param>
-        public HealthPotion(int health)
+        public HealthPotion(int health = 250) 
         {
+            Name = "God's Tear";
             Health = health;
         }
 
