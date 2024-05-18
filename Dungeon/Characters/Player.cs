@@ -7,7 +7,7 @@ namespace Dungeon.Characters
     public class Player : ICharacter
     {
        /// <summary>
-        /// Hp property for the Traveler enemy
+        /// Hp property for the Player enemy
         /// 
         /// </summary>
         /// <value>
@@ -38,8 +38,7 @@ namespace Dungeon.Characters
         /// Read-only property set to 50 by default
         /// </summary>
         /// <value></value>
-        public int AttackPower { get; } = 50;
-        int ICharacter.AttackPower { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int AttackPower { get ; set; }
 
 
         /// <summary>
