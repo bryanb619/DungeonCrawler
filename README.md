@@ -101,6 +101,9 @@ classDiagram
   class ICharacter 
   <<interface>>  ICharacter 
 
+  class IView
+  <<interface>> IView 
+
 ```
 
 ## Referências
