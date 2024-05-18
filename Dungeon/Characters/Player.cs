@@ -65,7 +65,34 @@ namespace Dungeon.Characters
             {   
                 target.TakeDamage(AttackPower);
             }
-           
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        public void PickUpItem(Item item)
+        {
+            _inventory.Add(item);
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        public void UseInventoryItem(Item item)
+        {
+
+            if(item.GetType() == typeof(HealthPotion))
+            {
+                Hp += item.Use();
+            }
+            // other potion
+
+            // other potion2
+            
+            _inventory.Remove(item);
         }
 
         public void Move()
@@ -83,9 +110,5 @@ namespace Dungeon.Characters
             throw new NotImplementedException();
         }
 
-        public void PickUpItem(Item item)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
