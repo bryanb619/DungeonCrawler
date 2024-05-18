@@ -20,6 +20,25 @@ namespace Dungeon
         }
 
 
+        public void WelcomeMessage()
+        {
+            Console.WriteLine("Welcome to the dungeon!");
+        }
+
+        public int ShowMenu()
+        {
+            Console.WriteLine("1. Move");
+            Console.WriteLine("2. Attack");
+            Console.WriteLine("3. Use Item");
+            Console.WriteLine("4. Quit");
+
+            Console.Write("Choose an option: ");
+
+            return Convert.ToInt32(Console.ReadLine());
+          
+        }
+
+
         /// <summary>
         /// Received and displays a message of type string passed as a parameter.
         /// Should be used to display messages like room description, player status, etc.
