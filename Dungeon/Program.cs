@@ -29,17 +29,16 @@ namespace Dungeon
             // Instantiate a room   (model)
             Model model = new Model();
 
-        
-
+    
             // Instantiate a game   (controller) 
-            Game game = new Game();
+            Game game = new Game(model);
 
             // Instantiate a view 
             //pass as param (game, model) 
             IView view = new View(game, model);
             
             // Run the game         
-            //game.Start(view);
+            game.Start(view);
 
 
         }
