@@ -82,19 +82,25 @@
 classDiagram
 
   Model             <--    Program 
-  Game              <--    Program      
-  View              <--    Program 
+  Model             <--    Game
+
+  Game              <--    Program  
+
+  ICharacter        <|..   Player
+  ICharacter        <|..   Enemy
+     
+  Player            <--    Model 
+  Item              --*    Player  
 
   IView             <|..    View
+  IView             <--     Game
+  View              <--    Program 
 
   Item              <|--     HealthPotion
   Item              <|--     OtherPotion  
   Item              <|--     OtherPotion2  
 
-  ICharacter        <|..     Player
-  ICharacter        <|..     Enemy
-
-
+  
   class Item 
   <<abstract>> Item 
 
