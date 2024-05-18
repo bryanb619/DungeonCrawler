@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
 using Dungeon.Items;
 using Dungeon.Characters;
-using System.IO;
+using System.Collections.Generic;
 
 
 namespace Dungeon
@@ -32,7 +30,18 @@ namespace Dungeon
             Item            = item;
             Enemy           = enemy;
         }
+        
 
+        /// <summary>
+        /// Method adds connections to a instance of room.
+        ///  
+        /// </summary>
+        /// <param name="exits">
+        /// Must receive dictionary with string as key and Room as value of this
+        /// dictionary as parameter.
+        /// Keys are equal to  W, E, N, S (Representing West, East, North, South)
+        /// Values are equal to the room instance that the key is pointing to.
+        /// </param>
         public void AddConnection(Dictionary<string, Room> exits)
         {
             // Add a connection to the room
