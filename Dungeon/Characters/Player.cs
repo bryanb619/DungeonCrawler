@@ -43,6 +43,9 @@ namespace Dungeon.Characters
 
         public string Name { get; }
 
+        // inventory list
+        private List<Item> _inventory = new List<Item>();
+
 
         /// <summary>
         /// Constructor for the Traveler Enemy
