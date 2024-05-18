@@ -16,6 +16,8 @@ namespace Dungeon
 
         public int PlayerPos { get; private set; } = 0;
 
+        private Player _player;
+
         int a = 0;
 
 
@@ -49,6 +51,8 @@ namespace Dungeon
                 { "W", _room[2] },
                 {"N", _room[4]}    });
 
+            
+
                 
             //CreatePlayer();
 
@@ -73,7 +77,7 @@ namespace Dungeon
         private void ReadMap()
         {
             {
-                using StreamReader sr = new StreamReader("Dungeon/Rooms/Map.txt");
+                using StreamReader sr = new StreamReader("Map/Map.txt");
 
                 // line of file
                 string line;
@@ -122,9 +126,9 @@ namespace Dungeon
         }
 
         
-        private void CreatePlayer()
+        private void CreatePlayer(string name = "Player")
         {
-            Player player = new Player("Player");
+            _player = new Player(name);
         }
 
 
@@ -137,14 +141,22 @@ namespace Dungeon
 
 
         // ------------------ Data manipulation --------------------------------
+
+
+        /*  Only section in Program where data is manipulated
+            *  
+            *
+
+        */
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void UpdatePlayerRoomPos()
         {
             PlayerPos++;
         }
 
-
-
-       
 
         /// <summary>
         /// 
@@ -154,6 +166,12 @@ namespace Dungeon
         public bool canMove(string input)
         {   
             return _room[PlayerPos].Connections.ContainsKey(input);
+        }
+
+
+        public bool GameOver()
+        {
+            return _player.Hp <= 0;
         }
 
     
