@@ -27,55 +27,21 @@ namespace Dungeon
         {
 
             // Instantiate a room   (model)
+            Model model = new Model();
 
-            
-           
-
-            DebugRoom();
-
-          
-
+        
 
             // Instantiate a game   (controller) 
-            //Game game = new Game();
+            Game game = new Game();
 
             // Instantiate a view 
-            // pass as param (game, room) 
-            //IView view = new View(game, room);
+            //pass as param (game, model) 
+            IView view = new View(game, model);
             
             // Run the game         
             //game.Start(view);
 
 
-        }
-
-
-        private static void DebugRoom()
-        {
-            Room[] room = new Room[15];
-
-
-            string description = "You are in a dark room";
-
-
-            Dictionary<string, Room> exits = new Dictionary<string, Room>
-            {
-                { "N", room[1] }
-
-            };
-
-            Item item = new HealthPotion(100);
-
-            Enemy enemy = new Enemy("Chaos", 100, 100);
-
-
-            room[0]  = new Room(description, exits, item , enemy);
-
-
-            Console.WriteLine($" Description: {room[0].Description}");
-            Console.WriteLine($" Conections: {room[0].Connections.Values.ToString()}");
-            Console.WriteLine($" Item: {room[0].Item.Name}");
-            Console.WriteLine($" Enemy: {room[0].Enemy.Name}");
         }
 
     }
