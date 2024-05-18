@@ -9,6 +9,12 @@ namespace Dungeon
     /// </summary>
     public interface IView
     {
+        
+
+        void WelcomeMessage();
+
+        int ShowMenu();
+
 
         /// <summary>
         /// Interface method.
