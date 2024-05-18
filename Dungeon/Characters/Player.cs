@@ -41,18 +41,28 @@ namespace Dungeon.Characters
         public int AttackPower { get ; set; }
 
 
+        public string Name { get; }
+
+
         /// <summary>
         /// Constructor for the Traveler Enemy
         /// </summary>
-        public Player()
+        public Player(string name)
         {
+            Name = name;
             Hp = 10000;
+            AttackPower = 50;
 
         }
 
         public void Attack(ICharacter target)
         {
-            throw new NotImplementedException();
+
+            if(target != null)
+            {   
+                target.TakeDamage(AttackPower);
+            }
+           
         }
 
         public void Move()
