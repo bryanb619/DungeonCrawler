@@ -1,4 +1,6 @@
-﻿namespace Dungeon
+﻿using Dungeon.Characters;
+
+namespace Dungeon
 {
     /// <summary>
     /// Represents the game entry point.
@@ -17,6 +19,7 @@
         /// <param name="args">Not used</param>
         private static void Main(string[] args)
         {
+
             // Instantiate a Model              (model)
             Model model = new Model();
 
