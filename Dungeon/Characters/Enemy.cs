@@ -9,13 +9,21 @@ namespace Dungeon.Characters
     /// </summary>
     public  class Enemy : ICharacter
     {
+        public string Name { get; }
+
         // Abstract property that represents enemy Health Points
         public int Hp { get; set; }
 
-
         // Abstract property that represents enemy Attack Power
-        public  int AttackPower { get; }
-        int ICharacter.AttackPower { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public  int AttackPower { get; set; }
+
+        
+        public Enemy(string name,int hp, int attackPower)
+        {
+            Name        = name;
+            Hp          = hp;
+            AttackPower = attackPower;
+        }
 
         public void Attack(ICharacter target)
         {
