@@ -11,7 +11,12 @@ namespace Dungeon.Items
         /// Allows the player to interact with the items.
         /// Method is overriden in by all items subclasses.
         /// </summary>
-        public virtual void Interact(){}
+
+        public abstract void Interact();
+
+        public abstract int Use();
+        
+           
         
     }
 }
