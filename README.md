@@ -1,22 +1,15 @@
-# Dungeon Crawler
+# LP1 // Projeto 2: *Yet Another Dungeon Crawler*
 
 ## Autoria
 
-### Elementos do grupo
-
-- Sónia Raposo 22000344
-- Steven Hall 22001753
-  
-### _Report_
-
-#### Sónia
+### Sónia Raposo 22000344
 
 - Código:
   - _Bug fixing_
 - Relatório: 40.0%
 - UML: 50.0%
 
-#### Steven
+### Steven Hall 22001753
 
 - Código:
   - Classes  
@@ -28,6 +21,47 @@
 - UML: 50.0%
 
 ## Arquitetura da solução
+
+*Yet Another Dungeon Crawler* 
+
+### Jogador
+
+- **Health Points:** 1000
+- **Attack Power:** 85 (Até 100 com item Heretic's Rage +5 AP)
+- **Movimento:** North, South, West and East
+- **Uso de items**: O jogador explora todas as salas após entrar. Devido à natureza da Dungeon, o jogador nunca sabe o que é o item até escolher utilizá-lo.
+  - Use item: O efeito do item é imediatamente aplicado ao jogador.
+  - Leave it alone: O jogador não é afetado pelo item.
+
+### Inimigo: Traveler
+
+- **Health Points:** 100
+- **Attack Power:** 50
+
+### Inimigo: Chaos
+
+- **Health Points:** 250
+- **Attack Power:** 130
+
+### Inimigo: Titan
+
+- **Health Points:** 350
+- **Attack Power:** 100
+- 
+### Inimigo: Boss?
+
+- **Health Points:** ?
+- **Attack Power:** ?
+
+### Item: God's Tear
+
+- **Status:** Regenera + 250 HP ao jogador
+
+### Item: Ivy's Flask
+
+- **Status:** Inflige - 150 HP ao jogador
+
+
 
 ### Descrição da solução
 
