@@ -1,5 +1,3 @@
-using Dungeon.Items;
-
 namespace Dungeon.Characters
 {
     public interface ICharacter
