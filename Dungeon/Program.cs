@@ -1,4 +1,9 @@
-﻿namespace Dungeon
+﻿using System;
+using System.Collections.Generic;
+using Dungeon.Items;
+using Dungeon.Characters;
+
+namespace Dungeon
 {
     /// <summary>
     /// Represents the game entry point.
@@ -8,7 +13,7 @@
     class Program
     {
         // DEBUG ROOM
-        private static Room[,] room = new Room[15, 5];
+        private static Room[] room = new Room[15];
 
         /// <summary>
         /// Entry point of the game.
@@ -24,42 +29,54 @@
             // Instantiate a room   (model)
 
             
-            Room[,] room = new Room[16, 5];
+           
 
             DebugRoom();
 
+          
+
 
             // Instantiate a game   (controller) 
-            Game game = new Game();
+            //Game game = new Game();
 
             // Instantiate a view 
             // pass as param (game, room) 
-            IView view = new View(game, room);
+            //IView view = new View(game, room);
             
             // Run the game         
-            game.Start(view);
+            //game.Start(view);
+
+
         }
 
 
         private static void DebugRoom()
         {
+            Room[] room = new Room[15];
 
-            room[0, 0]  = new Room();
-            room[1, 0]  = new Room();
-            room[2, 0]  = new Room();
-            room[3, 0]  = new Room();
-            room[4, 0]  = new Room();
-            room[5, 0]  = new Room();
-            room[6, 0]  = new Room();
-            room[7, 0]  = new Room();
-            room[8, 0]  = new Room();
-            room[9, 0]  = new Room();
-            room[10, 0] = new Room();
-            room[11, 0] = new Room();
-            room[12, 0] = new Room();
-            room[13, 0] = new Room();
-            room[14, 0] = new Room();
-            room[15, 0] = new Room();
+
+            string description = "You are in a dark room";
+
+
+            Dictionary<string, Room> exits = new Dictionary<string, Room>
+            {
+                { "N", room[1] }
+
+            };
+
+            Item item = new HealthPotion(100);
+
+            Enemy enemy = new Enemy("Chaos", 100, 100);
+
+
+            room[0]  = new Room(description, exits, item , enemy);
+
+
+            Console.WriteLine($" Description: {room[0].Description}");
+            Console.WriteLine($" Conections: {room[0].Connections.Values.ToString()}");
+            Console.WriteLine($" Item: {room[0].Item.Name}");
+            Console.WriteLine($" Enemy: {room[0].Enemy.Name}");
         }
+
     }
 }
