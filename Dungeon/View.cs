@@ -60,9 +60,17 @@ namespace Dungeon
         }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="inventory">It stores the items the player collected,
+        /// displaying the number to access its and the name </param>
+        /// <returns>
+        /// Returns an int that will be used to access the item
+        /// </returns>
         public int ShowInventory(List<Item> inventory)
         {
-            Console.WriteLine("Inventory: ");
+            Console.WriteLine("Things you stole, I mean: Inventory: ");
 
             int i = 1;
 
@@ -72,7 +80,7 @@ namespace Dungeon
                 i++;
             }
 
-            Console.Write("Choose an item: ");
+            Console.Write("Pick an item to use: ");
 
             return Convert.ToInt32(Console.ReadLine());
         }
@@ -81,10 +89,12 @@ namespace Dungeon
 
         /// <summary>
         /// Received and displays a message of type string passed as a parameter.
-        /// Should be used to display messages like room description, player status, etc.
-        /// This method uses Console.WriteLine, so it will automaticaly enter a new 
-        /// line after the string (message)
-        /// No parameter can also be passed as the controller might just want a Enter.
+        /// Should be used to display messages like room description, player 
+        /// status, etc.
+        /// This method uses Console.WriteLine, so it will automatically enter a
+        /// new line after the string (message)
+        /// No parameter can also be passed as the controller might just want a 
+        /// Enter.
         /// </summary>
         /// <param name="message"> Message to be displayed (string) /// </param>
         public void NewLineMessage(string message)
@@ -115,16 +125,20 @@ namespace Dungeon
         /// </summary>
         public void WaitForKey()
         {
-            Console.Write("\nPress any key to continue...");
+            Console.Write("\n** Gently smash any key to proceed **");
 
             Console.ReadKey(true);
 
             Console.WriteLine("\n");
         }
 
+        /// <summary>
+        /// Method displays a general Error Message
+        /// </summary>
+        /// <param name="message"></param>
         public void ErrorMessage(string message ="")
         {
-            if (message.Length <= 0) Console.WriteLine("Unkown Error");
+            if (message.Length <= 0) Console.WriteLine("Unknown Error");
 
             Console.WriteLine(message);
             
@@ -136,7 +150,8 @@ namespace Dungeon
         /// </summary>
         public void EndMessage()
         {
-            Console.WriteLine("Game Over");
+            Console.WriteLine(
+                "You're not very good at dungeon crawling are you...");
         }
 
 
