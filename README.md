@@ -17,10 +17,18 @@
 ### Steven Hall 22001753
 
 - Código:
-  - Classes  
-
-  - Enumeradores
-    - EnemyKind
+  - Classes:
+    - Player
+    - Enemy
+    - Item
+    - HealthPotion
+    - Model
+    - Room
+    - Game
+    - View  
+    - Program
+  - Interfaces
+    - IView
   - _Bug fixing_
 - Relatório: 60.0%
 - UML: 50.0%
@@ -81,19 +89,34 @@
 
 classDiagram
 
+  Model             <--    Program 
+  Model             <--    Game
 
-  Item         <|--     HealthPotion
+  Game              <--    Program  
 
-  Enemy        <|--     Traveler
-  Enemy        <|--     Chaos
-  Enemy        <|--     Titan 
+  ICharacter        <|..   Player
+  ICharacter        <|..   Enemy
+     
+  Player            <--    Model 
+  Item              --*    Player  
 
+  IView             <|..    View
+  IView             <--     Game
+  View              <--    Program 
 
+  Item              <|--     HealthPotion
+  Item              <|--     OtherPotion  
+  Item              <|--     OtherPotion2  
+
+  
   class Item 
   <<abstract>> Item 
 
-  class Enemy
-  <<abstract>> Enemy 
+  class ICharacter 
+  <<interface>>  ICharacter 
+
+  class IView
+  <<interface>> IView 
 
 ```
 
@@ -109,7 +132,7 @@ classDiagram
   
 A Realização deste projeto consistiu essencialmente em pesquisa própria, conhecimento adquirido por trabalhos e ensino fornecido por proferessores em diversas unidades curriculares lecionadas na [licenciatura de Videojogos](https://www.ulusofona.pt/lisboa/licenciaturas/videojogos).
 
-O único docente com quem foi entrado em contacto para discutir questões relacionadas ao projeto, dúvidas, lógica e/ou eficiência do código foi ao professor Nuno Fachada.
+O único docente com quem foi entrado em contacto para discutir questões relacionadas ao projeto, dúvidas, lógica e/ou eficiência do código foi ao professor Nuno Fachada relativamente a lógica de inicialização de salas, herança comum de personagens como _Player_ e _Enemy_ como também em relação a variáveis de suporte e sua respectiva utilidade. 
 
 ### _Links_ de pesquisa utilizados para realização do projeto
 
@@ -132,6 +155,10 @@ O único docente com quem foi entrado em contacto para discutir questões relaci
 - [_ANSI Color codes_](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
 - [_Envrionment.Exit(Int32)_](https://learn.microsoft.com/en-us/dotnet/api/system.environment.exit?view=netstandard-2.1)
 - [_Console.Clear()_](https://learn.microsoft.com/en-us/dotnet/api/system.console.clear?view=netstandard-2.1)
+
+- [_string.Join()_](https://learn.microsoft.com/en-us/dotnet/api/system.string.join?view=netstandard-2.1#system-string-join(system-char-system-object()))
+  
+- [_String.Contains()_](https://learn.microsoft.com/en-us/dotnet/api/system.string.contains?view=netstandard-2.1#system-string-contains(system-char))
 
 #### _Youtube_ (vídeos)
 

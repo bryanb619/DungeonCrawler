@@ -1,4 +1,6 @@
-﻿namespace Dungeon
+﻿using Dungeon.Characters;
+
+namespace Dungeon
 {
     /// <summary>
     /// Represents the game entry point.
@@ -9,26 +11,29 @@
     {
         /// <summary>
         /// Entry point of the game.
-        /// 3 instances are created: Model, Controller and View.
-        /// Model       = Room class => represents Program logic. 
-        /// Controller  = Game class => represents the game loop.
-        /// View        = View class => represents the user interface (UI).
+        /// 3 instances are created: Model, Controller and View:
+        /// * Model       = model class => represents Game logic. 
+        /// * Controller  = Game class => represents the game loop.
+        /// * View        = View class => represents the user interface (UI).
         /// </summary>
         /// <param name="args">Not used</param>
         private static void Main(string[] args)
         {
-            // Instantiate a room   (model)
-            Room room = new Room();
 
-            // Instantiate a game   (controller) 
-            Game game = new Game();
+            // Instantiate a Model              (model)
+            Model model = new Model();
 
-            // Instantiate a view 
-            // pass as param (game, room) 
-            IView view = new View(game, room);
+            // Instantiate a game               (controller) 
+            Game game = new Game(model);
+
+            // Instantiate a view               (view)
+            //pass as param  (game, model) 
+            IView view = new View(game, model);
             
-            // Run the game         
+            // Run the game    
+            // passing as param (view)     
             game.Start(view);
         }
     }
 }
+// -----------------------------------------------------------------------------
