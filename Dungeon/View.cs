@@ -24,7 +24,11 @@ namespace Dungeon
 
         public void WelcomeMessage()
         {
-            Console.WriteLine("Welcome to the dungeon!");
+            Console.WriteLine("Welcome to Yet Another Dungeon Crawler!");
+            Console.WriteLine(
+                "You have entered a Dungeon of... Another Dungeon Crawler.");
+            Console.WriteLine(
+                "Since you're here, how would you like to proceed?");
         }
 
         public int ShowMenu()
@@ -32,9 +36,9 @@ namespace Dungeon
             Console.WriteLine("1. Move");
             Console.WriteLine("2. Attack");
             Console.WriteLine("3. Use Item");
-            Console.WriteLine("4. Quit");
+            Console.WriteLine("4. Quit Game");
 
-            Console.Write("Choose an option: ");
+            Console.Write("Choose your next action: ");
 
     
             return Convert.ToInt32(Console.ReadLine());
