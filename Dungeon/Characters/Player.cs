@@ -6,32 +6,34 @@ namespace Dungeon.Characters
 {
     public class Player : ICharacter
     {
-       /// <summary>
-        /// Hp property for the Player enemy
+
+
+        private int _hp; 
+
+        /// <summary>
+        /// Hp property for the Player
         /// 
         /// </summary>
         /// <value>
         /// Passed value will be subtracted from the current agent Hp 
         /// Use of the property without setting a value will return the current Hp value of Traveler agent
         /// </value>
-        public  int Hp 
-        { 
-            get { return Hp; }
+        public int Hp {
 
-            set 
-            {
-                // Check if the value is less than 1
+            get { return _hp; }
 
-                if (Hp < 1)
-                {
 
-                    // Kill this agent
-                    // break 
+            set { 
+                if(_hp <= 0)
+                {  
+                    // kill 
                 }
 
-                this.Hp -= value;
+                _hp -= value;
             }
-         }
+
+          
+        }
 
         /// <summary>
         /// AttackPower property for the Traveler enemy
@@ -40,22 +42,26 @@ namespace Dungeon.Characters
         /// <value></value>
         public int AttackPower { get ; set; }
 
-
         public string Name { get; }
 
+        public int PlayerPos { get; private set; } = 0;
+
+
         // inventory list
-        private List<Item> _inventory = new List<Item>();
+        private List<Item> _inventory = new List<Item>(10);
+
+        public List<Item> Inventory => _inventory;
+
 
 
         /// <summary>
         /// Constructor for the Traveler Enemy
         /// </summary>
-        public Player(string name)
+        public Player(string name = "Player")
         {
-            Name = name;
-            Hp = 10000;
-            AttackPower = 50;
-
+            Name            = name;
+            Hp              = 10000;
+            AttackPower     = 85;
         }
 
         public void Attack(ICharacter target)
@@ -95,19 +101,21 @@ namespace Dungeon.Characters
             _inventory.Remove(item);
         }
 
-        public void Move()
+        public void UpdatePos(int pos)
         {
-            throw new NotImplementedException();
+            // TODO: Implement movement
+            this.PlayerPos = pos;
+            
         }
 
         public void Heal(int amount)
         {
-            throw new NotImplementedException();
+            Hp += amount;
         }
 
         public void TakeDamage(int amount)
         {
-            throw new NotImplementedException();
+            Hp -= amount;
         }
 
     }
