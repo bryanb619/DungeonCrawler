@@ -17,75 +17,121 @@ namespace Dungeon
             _model = model;
         }
 
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="view"></param>
         public void Start(IView view)
         {
             
-
-
             _view = view;
+
             _model.GenerateGame();
-
-
-            
-
-            //if (_model.canMove("E")) view.DisplayMessage("You moved East");
-
-            //else view.DisplayMessage("You can't move there");
-
 
             view.WelcomeMessage();
 
             view.ShowMenu();
 
 
-            while(true)
+            int option = 0;
+
+
+            do
+
             {
-                int option = _view.ShowMenu();
+                option = _view.ShowMenu();
 
+                // Run the game loop
+                // Get the player input
 
-                switch(option)
+                // Update the model
+                // Update the view
+                // Check for game over
+
+                switch (option)
                 {
                     case 1:
                         Move();
                         break;
+
                     case 2:
-                        _view.DisplayMessage("You attacked");
+                        _view.NewLineMessage("You attacked");
                         break;
+
                     case 3:
-                        _view.DisplayMessage("You used an item");
+                        _view.NewLineMessage("You used an item");
                         break;
+
                     case 4:
-                        _view.DisplayMessage("You quit the game");
+                        _view.NewLineMessage("xxx");
                         break;
-                    default:
-                        _view.DisplayMessage("Invalid option");
+
+                    case 5: 
+                        _view.NewLineMessage("xxx");
                         break;
+
+                    case 6:
+                        _view.NewLineMessage("You quit the game");
+
+                        break;
+
+
+                    default: { _view.NewLineMessage("Invalid option"); break;}
+
                 }
-                
-                // Run the game loop
-                // Get the player input
-               
-                // Update the model
-                // Update the view
-                // Check for game over
-            }
-            
+
+            } while (option != 6);
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void Move()
         {
+            _view.LineMessage("Enter destination: ");
+
             string input = "";
 
-            if( _model.canMove(input))
+            input = _view.ReadInput();
+
+
+            if (_model.CanMove(input))
             {
+
+                string dir = ""; 
+
                 // TODO: add logic for saying where you moved to...
-                _view.DisplayMessage(input);
 
-            } 
+                switch(input)
+                {
+                    case "A":
+                        dir = "North";
+                        break;
 
-            else _view.DisplayMessage("You can't go there...");
+                    case "E":
+
+                        dir = "East";
+                        break;
+
+                    case "W":
+                        dir = "West";
+                        break;
+
+                    case "S":
+                        dir = "South";
+                        break;
+
+                    default: break;
+                }
+
+                _view.NewLineMessage($"You moved {dir}");
+
+            }
+
+            else { _view.NewLineMessage("You can't go there..."); }
             
         }
 
