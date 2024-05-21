@@ -18,6 +18,8 @@ namespace Dungeon
 
         private Player _player;
 
+        public Player Player => _player;
+
         int a = 0;
 
 
@@ -52,9 +54,7 @@ namespace Dungeon
                 {"N", _room[4]}    });
 
             
-
-                
-            //CreatePlayer();
+            CreatePlayer();
 
             foreach (Room room in _room)
             {
@@ -63,10 +63,19 @@ namespace Dungeon
         }
 
 
+        private void CreatePlayer(string name = "Player")
+        {
+            _player = new Player(name);
+        }
+
+
+
 
 
         private void TestRooms(
-            string description = "some room", Item item = null, Enemy enemy = null)
+            string description = "some room", 
+            Item item = null, 
+            Enemy enemy = null)
         {
 
             _room[a] = new Room(description, item, enemy);
@@ -120,22 +129,20 @@ namespace Dungeon
         private void CreateRooms(string description, Item item, Enemy enemy)
         {
 
-        
-           
-            
+    
         }
-
-        
-        private void CreatePlayer(string name = "Player")
-        {
-            _player = new Player(name);
-        }
-
 
 
         // ------------- Action methods from controller ------------------------
 
+        public void PickItem()
+        {
+            // add item to player inventory
+            _player.PickUpItem(_room[PlayerPos].Item);
 
+            // null this item
+            _room[PlayerPos].Item = null;
+        }
 
 
 

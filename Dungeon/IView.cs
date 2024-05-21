@@ -1,4 +1,5 @@
 using System;
+using Dungeon.Items;
 using System.Collections.Generic;
 
 namespace Dungeon
@@ -15,15 +16,22 @@ namespace Dungeon
 
         int ShowMenu();
 
+        int ShowInventory(List<Item> inventory);
+
 
         /// <summary>
-        /// Interface method.
-        /// Should be used to display a string message passed as parameter.
+        /// Interface method. The method to be invoked will be implemented in the
+        /// View class.
+        /// Should be used to display message string  passed as parameter.
+        /// This method uses Console.WriteLine, so it will automaticaly enter a new 
+        /// line after the string (message) in implemented class.
+        /// No parameter can also be passed as the controller might just want a Enter.
         /// </summary>
         /// <param name="message">
         /// Message to be displayed (string)
+        /// No parameters can also be passed just like using WriteLine(); without passing a parameter
         /// /// </param>
-        void DisplayMessage(string message);
+        void NewLineMessage(string message);
 
 
         /// <summary>
@@ -33,7 +41,10 @@ namespace Dungeon
         /// <param name="message">
         /// Message to be displayed (int)
         /// </param>
-        void DisplayMessage(int message);
+        void LineMessage(string message);
+
+
+        string ReadInput();
 
 
         /// <summary>
