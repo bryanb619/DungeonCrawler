@@ -22,6 +22,11 @@ namespace Dungeon
         }
 
 
+        /// <summary>
+        /// Prints on the screen the welcome message to the player, introducing
+        /// the name of the game, the setting where the player is and how the
+        /// player intends to proceed.
+        /// </summary>
         public void WelcomeMessage()
         {
             Console.WriteLine("Welcome to Yet Another Dungeon Crawler!");
@@ -31,6 +36,15 @@ namespace Dungeon
                 "Since you're here, how would you like to proceed?");
         }
 
+        /// <summary>
+        /// Prints on the screen the menu of the game: 1. Player can choose 
+        /// where to move; 2: Player can attack the enemy; 3: Player can access
+        /// inventory to use an item; 4: Player can quit the game as it will
+        /// close.
+        /// </summary>
+        /// <returns>
+        /// Returns an int that will be used to access the chosen option
+        /// </returns>
         public int ShowMenu()
         {
             Console.WriteLine("1. Move");
