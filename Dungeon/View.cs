@@ -1,4 +1,6 @@
+using Dungeon.Items;
 using System;
+using System.Collections.Generic;
 
 namespace Dungeon
 {
@@ -39,12 +41,34 @@ namespace Dungeon
         }
 
 
+        public int ShowInventory(List<Item> inventory)
+        {
+            Console.WriteLine("Inventory: ");
+
+            int i = 1;
+
+            foreach (Item item in inventory)
+            {
+                Console.WriteLine($"{i}. {item.Name}");
+                i++;
+            }
+
+            Console.Write("Choose an item: ");
+
+            return Convert.ToInt32(Console.ReadLine());
+        }
+
+
+
         /// <summary>
         /// Received and displays a message of type string passed as a parameter.
         /// Should be used to display messages like room description, player status, etc.
+        /// This method uses Console.WriteLine, so it will automaticaly enter a new 
+        /// line after the string (message)
+        /// No parameter can also be passed as the controller might just want a Enter.
         /// </summary>
         /// <param name="message"> Message to be displayed (string) /// </param>
-        public void DisplayMessage(string message)
+        public void NewLineMessage(string message)
         {
             Console.WriteLine(message);
         }
@@ -56,9 +80,15 @@ namespace Dungeon
         /// Should be used to display messages like HP, Attack, etc.
         /// </summary>
         /// <param name="message">Message to be displayed (int)</param>
-        public void DisplayMessage(int message)
+        public void LineMessage(string message)
         {
-            Console.WriteLine(message);
+            Console.Write(message);
+        }
+
+
+        public string ReadInput()
+        {
+            return Console.ReadLine();
         }
 
         /// <summary>
