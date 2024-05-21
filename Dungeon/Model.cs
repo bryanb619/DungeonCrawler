@@ -11,17 +11,19 @@ namespace Dungeon
 
         private Room[] _room = new Room[15];
 
-        public Room[] Room { get; private set; }
+        public Room[] Room => _room;
 
+       // public Room[] Room { get; private set; }
 
-        public int PlayerPos { get; private set; } = 0;
 
         private Player _player;
 
         public Player Player => _player;
 
-        int a = 0;
 
+        private int CurrentRoom = 0;
+
+        int a = 0;
 
         public void GenerateGame()
         {
@@ -31,9 +33,8 @@ namespace Dungeon
             TestRooms("room2", new HealthPotion(), new Enemy("Titan", 200, 15));
             TestRooms("Room3", new HealthPotion(), new Enemy("Chaos", 100, 10));
             TestRooms("Room3", new HealthPotion(), new Enemy("Chaos", 100, 10));
-            
-            
-            Room = _room;
+
+        
 
 
             _room[0].AddConnection(new Dictionary<string, Room> { 
@@ -58,7 +59,7 @@ namespace Dungeon
 
             foreach (Room room in _room)
             {
-                Console.WriteLine(room.Connections);
+                //Console.WriteLine(room.Connections);
             }
         }
 
@@ -138,10 +139,10 @@ namespace Dungeon
         public void PickItem()
         {
             // add item to player inventory
-            _player.PickUpItem(_room[PlayerPos].Item);
+            _player.PickUpItem(_room[CurrentRoom].Item);
 
             // null this item
-            _room[PlayerPos].Item = null;
+            _room[CurrentRoom].Item = null;
         }
 
 
@@ -156,12 +157,25 @@ namespace Dungeon
 
         */
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public void UpdatePlayerRoomPos()
+
+
+        public bool CanMove(string input)
         {
-            PlayerPos++;
+
+            if (_room[CurrentRoom].Connections.ContainsKey(input))
+            {
+
+                // update current room
+                CurrentRoom = GetNextRoomIndex(input);
+
+
+                _player.UpdatePos(CurrentRoom);
+
+
+                return true;
+            }
+            
+            return false;
         }
 
 
@@ -170,10 +184,13 @@ namespace Dungeon
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public bool canMove(string input)
-        {   
-            return _room[PlayerPos].Connections.ContainsKey(input);
+        public int GetNextRoomIndex(string input)
+        {
+            return Convert.ToInt16(_room[CurrentRoom].Connections[input]);
+           
         }
+
+            
 
 
         public bool GameOver()
