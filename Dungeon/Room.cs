@@ -19,16 +19,19 @@ namespace Dungeon
 
         public Item Item { get; set; }
 
-        public Enemy Enemy { get; }
-        
+        public Enemy Enemy { get; set; }
 
-        public Room(string description, Item item, Enemy enemy)
+        public int Id { get; }
+
+
+        public Room(string description, Item item, Enemy enemy, int id)
         {
 
             // string name, string description, List<Char> exits, Item item, Enemy enemy
             Description     = description;
             Item            = item;
             Enemy           = enemy;
+            Id              = id;
         }
         
 
