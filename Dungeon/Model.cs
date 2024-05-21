@@ -3,6 +3,8 @@ using System.IO;
 using System.Collections.Generic;
 using Dungeon.Items;
 using Dungeon.Characters;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Dungeon
 {
@@ -12,9 +14,6 @@ namespace Dungeon
         private Room[] _room = new Room[15];
 
         public Room[] Room => _room;
-
-       // public Room[] Room { get; private set; }
-
 
         private Player _player;
 
@@ -28,11 +27,11 @@ namespace Dungeon
         public void GenerateGame()
         {
             
-            TestRooms("A dark Room", new HealthPotion(), new Enemy("Chaos", 100, 10));
-            TestRooms("room1", new HealthPotion(), new Enemy("Chaos", 100, 10));
-            TestRooms("room2", new HealthPotion(), new Enemy("Titan", 200, 15));
-            TestRooms("Room3", new HealthPotion(), new Enemy("Chaos", 100, 10));
-            TestRooms("Room3", new HealthPotion(), new Enemy("Chaos", 100, 10));
+            TestRooms("A dark Room", new HealthPotion(), new Enemy("Chaos", 100, 10),0);
+            TestRooms("room1", new HealthPotion(), new Enemy("Chaos", 100, 10),1);
+            TestRooms("room2", new HealthPotion(), new Enemy("Titan", 200, 15),2);
+            TestRooms("Room3", new HealthPotion(), new Enemy("Chaos", 100, 10),3);
+            TestRooms("Room3", new HealthPotion(), new Enemy("Chaos", 100, 10),4);
 
         
 
@@ -64,7 +63,7 @@ namespace Dungeon
         }
 
 
-        private void CreatePlayer(string name = "Player")
+        public void CreatePlayer(string name = "Player")
         {
             _player = new Player(name);
         }
@@ -76,10 +75,11 @@ namespace Dungeon
         private void TestRooms(
             string description = "some room", 
             Item item = null, 
-            Enemy enemy = null)
+            Enemy enemy = null, 
+            int i = 0)
         {
 
-            _room[a] = new Room(description, item, enemy);
+            _room[a] = new Room(description, item, enemy, i);
             a++;
         }
 
@@ -136,6 +136,12 @@ namespace Dungeon
 
         // ------------- Action methods from controller ------------------------
 
+        public string NextRoomDescription()
+        {
+           return _room[CurrentRoom].Description;
+        }
+
+
         public void PickItem()
         {
             // add item to player inventory
@@ -144,6 +150,8 @@ namespace Dungeon
             // null this item
             _room[CurrentRoom].Item = null;
         }
+
+
 
 
 
@@ -165,16 +173,18 @@ namespace Dungeon
             if (_room[CurrentRoom].Connections.ContainsKey(input))
             {
 
-                // update current room
-                CurrentRoom = GetNextRoomIndex(input);
+                Room nextRoom = _room[CurrentRoom].Connections[input];
 
+                // update current room
+                CurrentRoom = nextRoom.Id;
+                
 
                 _player.UpdatePos(CurrentRoom);
 
 
                 return true;
             }
-            
+
             return false;
         }
 
@@ -186,13 +196,15 @@ namespace Dungeon
         /// <returns></returns>
         public int GetNextRoomIndex(string input)
         {
-            return Convert.ToInt16(_room[CurrentRoom].Connections[input]);
-           
+            // get room
+            Room nextRoom = _room[CurrentRoom];
+
+
+            return nextRoom.Id;
+
         }
 
             
-
-
         public bool GameOver()
         {
             return _player.Hp <= 0;

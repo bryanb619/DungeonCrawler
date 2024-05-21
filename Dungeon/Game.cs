@@ -17,11 +17,14 @@ namespace Dungeon
             _model = model;
         }
 
-        
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="view"></param>
+        /// <param name="view">
+        /// Receives IView inteface as parameter.
+        /// Essencial reference so the Controller (Game.cs) can comunicate with 
+        /// the 
+        /// </param>
         public void Start(IView view)
         {
             
@@ -30,8 +33,8 @@ namespace Dungeon
             _model.GenerateGame();
 
             view.WelcomeMessage();
-
-            view.ShowMenu();
+            
+            _model.CreatePlayer();
 
 
             int option = 0;
@@ -56,24 +59,24 @@ namespace Dungeon
                         break;
 
                     case 2:
-                        _view.NewLineMessage("You attacked");
+                        Attack();
                         break;
 
                     case 3:
-                        _view.NewLineMessage("You used an item");
+                        GetItem();
                         break;
 
                     case 4:
-                        _view.NewLineMessage("xxx");
-                        break;
-
-                    case 5: 
-                        _view.NewLineMessage("xxx");
-                        break;
-
-                    case 6:
                         _view.NewLineMessage("You quit the game");
+                        break;
 
+
+                    case 5:
+                        _view.NewLineMessage("other action");
+                        break;
+
+                    case 6: 
+                        _view.NewLineMessage("other action 2");
                         break;
 
 
@@ -81,7 +84,7 @@ namespace Dungeon
 
                 }
 
-            } while (option != 6);
+            } while (option != 4);
         }
 
 
@@ -102,8 +105,6 @@ namespace Dungeon
             {
 
                 string dir = ""; 
-
-                // TODO: add logic for saying where you moved to...
 
                 switch(input)
                 {
@@ -127,12 +128,39 @@ namespace Dungeon
                     default: break;
                 }
 
+
+                _view.WaitForKey();
+
                 _view.NewLineMessage($"You moved {dir}");
 
+
+                _view.NewLineMessage(_model.NextRoomDescription());
             }
 
             else { _view.NewLineMessage("You can't go there..."); }
             
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void NewRoom()
+        {
+            
+
+        }
+
+
+        private void Attack()
+        {
+            _view.NewLineMessage("You attacked");
+        }
+
+
+        private void GetItem()
+        {
+            _view.NewLineMessage("You used an item");
         }
 
     }
