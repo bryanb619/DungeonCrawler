@@ -17,7 +17,7 @@ namespace Dungeon
 
         public Dictionary<string, Room> Connections { get; private set;}
 
-        public Item Item { get; }
+        public Item Item { get; set; }
 
         public Enemy Enemy { get; }
         
