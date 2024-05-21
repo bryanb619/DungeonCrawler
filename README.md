@@ -4,6 +4,11 @@
 
 ### Sónia Raposo 22000344
 
+- Game Design
+  - Jogador
+  - Inimigos
+  - Items
+  - Mapa
 - Código:
   - _Bug fixing_
 - Relatório: 40.0%
@@ -22,14 +27,14 @@
 
 ## Arquitetura da solução
 
-*Yet Another Dungeon Crawler* 
+*Yet Another Dungeon Crawler*
 
 ### Jogador
 
 - **Health Points:** 1000
 - **Attack Power:** 85 (Até 100 com item Heretic's Rage +5 AP)
 - **Movimento:** North, South, West and East
-- **Uso de items**: O jogador explora todas as salas após entrar. Devido à natureza da Dungeon, o jogador nunca sabe o que é o item até escolher utilizá-lo.
+- **Uso de items**: O jogador explora todas as salas após entrar. Quais quer items encontrado pelo jogador serão guardados no inventário e poderá usá-los a qualquer momento.
   - Use item: O efeito do item é imediatamente aplicado ao jogador.
   - Leave it alone: O jogador não é afetado pelo item.
 
@@ -43,12 +48,12 @@
 - **Health Points:** 250
 - **Attack Power:** 130
 
-### Inimigo: Titan
+### Inimigo: Armog 
 
 - **Health Points:** 350
 - **Attack Power:** 100
 - 
-### Inimigo: Boss?
+### Inimigo: Titan
 
 - **Health Points:** ?
 - **Attack Power:** ?
@@ -61,6 +66,9 @@
 
 - **Status:** Inflige - 150 HP ao jogador
 
+### Item: Heretic Rage
+
+- **Status:** Adiciona permanentemente +5 Attack Power ao jogador
 
 
 ### Descrição da solução
