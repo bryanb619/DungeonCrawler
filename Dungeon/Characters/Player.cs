@@ -108,6 +108,7 @@ namespace Dungeon.Characters
             
         }
 
+
         public void Heal(int amount)
         {
             Hp += amount;

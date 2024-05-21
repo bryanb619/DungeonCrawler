@@ -3,8 +3,6 @@ using System.IO;
 using System.Collections.Generic;
 using Dungeon.Items;
 using Dungeon.Characters;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Dungeon
 {
@@ -13,12 +11,7 @@ namespace Dungeon
 
         private Room[]  _room = new Room[15];
 
-        public Room[]   Room => _room;
-
         private Player  _player;
-
-        public Player   Player => _player;
-
 
         private int     CurrentRoom = 0;
 
@@ -51,6 +44,8 @@ namespace Dungeon
             _room[3].AddConnection(new Dictionary<string, Room> { 
                 { "W", _room[2] },
                 {"N", _room[4]}    });
+
+
 
             
             CreatePlayer();
@@ -170,7 +165,7 @@ namespace Dungeon
                 // update current room
                 CurrentRoom = nextRoom.Id;
                 
-
+                // update player pos in world
                 _player.UpdatePos(CurrentRoom);
 
 
@@ -178,22 +173,6 @@ namespace Dungeon
             }
 
             return false;
-        }
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public int GetNextRoomIndex(string input)
-        {
-            // get room
-            Room nextRoom = _room[CurrentRoom];
-
-
-            return nextRoom.Id;
-
         }
 
             

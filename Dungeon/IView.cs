@@ -31,7 +31,7 @@ namespace Dungeon
         /// Message to be displayed (string)
         /// No parameters can also be passed just like using WriteLine(); without passing a parameter
         /// /// </param>
-        void NewLineMessage(string message);
+        void NewLineMessage(string message ="");
 
 
         /// <summary>
@@ -53,6 +53,8 @@ namespace Dungeon
         /// Like an event listener.
         /// </summary>
         void WaitForKey();
+
+        void ErrorMessage(string message);
 
 
         /// <summary>

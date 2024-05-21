@@ -36,6 +36,7 @@ namespace Dungeon
 
             Console.Write("Choose an option: ");
 
+    
             return Convert.ToInt32(Console.ReadLine());
           
         }
@@ -101,6 +102,14 @@ namespace Dungeon
             Console.ReadKey(true);
 
             Console.WriteLine("\n");
+        }
+
+        public void ErrorMessage(string message ="")
+        {
+            if (message.Length <= 0) Console.WriteLine("Unkown Error");
+
+            Console.WriteLine(message);
+            
         }
 
         /// <summary>
