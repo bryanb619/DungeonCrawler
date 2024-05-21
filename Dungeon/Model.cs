@@ -11,16 +11,16 @@ namespace Dungeon
     public class Model
     {
 
-        private Room[] _room = new Room[15];
+        private Room[]  _room = new Room[15];
 
-        public Room[] Room => _room;
+        public Room[]   Room => _room;
 
-        private Player _player;
+        private Player  _player;
 
-        public Player Player => _player;
+        public Player   Player => _player;
 
 
-        private int CurrentRoom = 0;
+        private int     CurrentRoom = 0;
 
         int a = 0;
 
@@ -34,7 +34,6 @@ namespace Dungeon
             TestRooms("Room3", new HealthPotion(), new Enemy("Chaos", 100, 10),4);
 
         
-
 
             _room[0].AddConnection(new Dictionary<string, Room> { 
                 { "E", _room[1] } });
@@ -63,12 +62,11 @@ namespace Dungeon
         }
 
 
+
         public void CreatePlayer(string name = "Player")
         {
             _player = new Player(name);
         }
-
-
 
 
 
@@ -152,10 +150,6 @@ namespace Dungeon
         }
 
 
-
-
-
-
         // ------------------ Data manipulation --------------------------------
 
 
@@ -164,8 +158,6 @@ namespace Dungeon
             *
 
         */
-
-
 
         public bool CanMove(string input)
         {

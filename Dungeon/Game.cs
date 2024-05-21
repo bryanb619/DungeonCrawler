@@ -43,7 +43,13 @@ namespace Dungeon
             do
 
             {
+
+      
+            
                 option = _view.ShowMenu();
+
+                while(option != 1)
+    
 
                 // Run the game loop
                 // Get the player input
@@ -80,7 +86,14 @@ namespace Dungeon
                         break;
 
 
-                    default: { _view.NewLineMessage("Invalid option"); break;}
+                    default: 
+                        {
+                            _view.NewLineMessage("Invalid option");
+
+                            // New Line
+                            _view.NewLineMessage();
+                            break;
+                        }
 
                 }
 
@@ -96,10 +109,23 @@ namespace Dungeon
         {
             _view.LineMessage("Enter destination: ");
 
+
             string input = "";
 
-            input = _view.ReadInput();
 
+            try
+            {
+                input = _view.ReadInput();
+            }
+
+
+            catch (Exception e)
+            {
+                _view.ErrorMessage(e.Message);
+            }
+
+
+    
 
             if (_model.CanMove(input))
             {
@@ -133,7 +159,6 @@ namespace Dungeon
 
                 _view.NewLineMessage($"You moved {dir}");
 
-
                 _view.NewLineMessage(_model.NextRoomDescription());
             }
 
@@ -161,9 +186,15 @@ namespace Dungeon
         private void GetItem()
         {
             _view.NewLineMessage("You used an item");
+
+            // ask model for items
+
+            
         }
 
     }
+
+
 
     
 }
