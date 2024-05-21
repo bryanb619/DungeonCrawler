@@ -73,7 +73,8 @@ namespace Dungeon
                         break;
 
                     case 4:
-                        _view.NewLineMessage("You quit the game");
+                        _view.NewLineMessage(
+                            "Wow, exiting the dungeon like this huh?");
                         break;
 
 
@@ -107,7 +108,7 @@ namespace Dungeon
         /// </summary>
         private void Move()
         {
-            _view.LineMessage("Enter destination: ");
+            _view.LineMessage("Which direction do you want to go? ");
 
 
             string input = "";
@@ -162,7 +163,8 @@ namespace Dungeon
                 _view.NewLineMessage(_model.NextRoomDescription());
             }
 
-            else { _view.NewLineMessage("You can't go there..."); }
+            else { _view.NewLineMessage(
+                "Ability to cross walls only in DLC version. Choose a direction with a door"); }
             
         }
 
@@ -179,13 +181,13 @@ namespace Dungeon
 
         private void Attack()
         {
-            _view.NewLineMessage("You attacked");
+            _view.NewLineMessage("You successfully hit your enemy");
         }
 
 
         private void GetItem()
         {
-            _view.NewLineMessage("You used an item");
+            _view.NewLineMessage("You used the chosen item");
 
             // ask model for items
 
