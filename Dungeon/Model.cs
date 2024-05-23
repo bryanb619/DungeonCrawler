@@ -127,6 +127,14 @@ namespace Dungeon
 
         // ------------- Action methods from controller ------------------------
 
+        // attack
+
+        public void CallPlayerAttack()
+        {
+            _player.Attack(_room[CurrentRoom].Enemy);
+        }
+
+
         public string NextRoomDescription()
         {
            return _room[CurrentRoom].Description;
