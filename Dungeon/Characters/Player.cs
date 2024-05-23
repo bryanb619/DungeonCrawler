@@ -23,12 +23,8 @@ namespace Dungeon.Characters
             get { return _hp; }
 
 
-            set { 
-               
-                _hp += value;
-            }
+            set { _hp += value; }
 
-          
         }
 
         /// <summary>
