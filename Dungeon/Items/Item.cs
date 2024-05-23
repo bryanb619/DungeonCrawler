@@ -5,7 +5,16 @@ namespace Dungeon.Items
     /// </summary>
     public abstract class Item
     {
-        public abstract string Name { get; }
+
+        public string Name { get; }
+
+
+
+        
+        public Item(string name)
+        {
+            Name = name;
+        }
 
         /// <summary>
         /// Allows the player to interact with the items.

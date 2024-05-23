@@ -12,19 +12,21 @@ namespace Dungeon
         private Room[]  _room = new Room[15];
 
         private Player  _player;
+        public Player Player => _player;
 
         private int     CurrentRoom = 0;
 
         int a = 0;
 
+
         public void GenerateGame()
         {
             
-            TestRooms("A dark Room", new HealthPotion(), new Enemy("Chaos", 100, 10),0);
-            TestRooms("room1", new HealthPotion(), new Enemy("Chaos", 100, 10),1);
-            TestRooms("room2", new HealthPotion(), new Enemy("Titan", 200, 15),2);
-            TestRooms("Room3", new HealthPotion(), new Enemy("Chaos", 100, 10),3);
-            TestRooms("Room3", new HealthPotion(), new Enemy("Chaos", 100, 10),4);
+            TestRooms("A dark Room", new HealthPotion("God's tear"), new Enemy("Chaos", 100, 10),0);
+            TestRooms("room1", new HealthPotion("God's tear"), new Enemy("Chaos", 100, 10),1);
+            TestRooms("room2", new HealthPotion("God's tear"), new Enemy("Titan", 200, 15),2);
+            TestRooms("Room3", new HealthPotion("God's tear"), new Enemy("Chaos", 100, 10),3);
+            TestRooms("Room3", new HealthPotion("God's tear"), new Enemy("Chaos", 100, 10),4);
 
         
 
@@ -45,10 +47,6 @@ namespace Dungeon
                 { "W", _room[2] },
                 {"N", _room[4]}    });
 
-
-
-            
-            CreatePlayer();
 
             foreach (Room room in _room)
             {
@@ -135,13 +133,33 @@ namespace Dungeon
         }
 
 
-        public void PickItem()
+        public string GetItem()
         {
-            // add item to player inventory
-            _player.PickUpItem(_room[CurrentRoom].Item);
+    
+            if (_room[CurrentRoom].Item != null)
+            {
 
-            // null this item
-            _room[CurrentRoom].Item = null;
+                Item item = _room[CurrentRoom].Item;
+
+                // player pick item
+                _player.PickUpItem(item);
+
+                if(item.GetType() == typeof(HealthPotion))
+                {
+
+                    HealthPotion healthPotion = (HealthPotion)item;
+
+                    return $"{item.Name} healed {healthPotion.Health}";
+                }
+
+                // null this item
+                _room[CurrentRoom].Item = null;
+
+            }
+            
+         
+
+            return "Nothing here...";
         }
 
 
@@ -178,7 +196,7 @@ namespace Dungeon
             
         public bool GameOver()
         {
-            return _player.Hp <= 0;
+            return true;//_player.Hp <= 0;
         }
 
     

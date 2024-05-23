@@ -24,12 +24,8 @@ namespace Dungeon.Characters
 
 
             set { 
-                if(_hp <= 0)
-                {  
-                    // kill 
-                }
-
-                _hp -= value;
+               
+                _hp += value;
             }
 
           
@@ -47,20 +43,13 @@ namespace Dungeon.Characters
         public int PlayerPos { get; private set; } = 0;
 
 
-        // inventory list
-        private List<Item> _inventory = new List<Item>(10);
-
-        public List<Item> Inventory => _inventory;
-
-
-
         /// <summary>
         /// Constructor for the Traveler Enemy
         /// </summary>
         public Player(string name = "Player")
         {
             Name            = name;
-            Hp              = 10000;
+            _hp              = 10000;
             AttackPower     = 85;
         }
 
@@ -80,26 +69,22 @@ namespace Dungeon.Characters
         /// <param name="item"></param>
         public void PickUpItem(Item item)
         {
-            _inventory.Add(item);
-        }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="item"></param>
-        public void UseInventoryItem(Item item)
-        {
 
+           
             if(item.GetType() == typeof(HealthPotion))
             {
-                Hp += item.Use();
-            }
-            // other potion
+                
+                HealthPotion healthPotion = (HealthPotion)item;
 
-            // other potion2
-            
-            _inventory.Remove(item);
+                Heal(healthPotion.Health);
+
+
+                Console.WriteLine(Hp);
+
+            }
+                
         }
+    
 
         public void UpdatePos(int pos)
         {
@@ -111,7 +96,7 @@ namespace Dungeon.Characters
 
         public void Heal(int amount)
         {
-            Hp += amount;
+            _hp += amount;
         }
 
         public void TakeDamage(int amount)

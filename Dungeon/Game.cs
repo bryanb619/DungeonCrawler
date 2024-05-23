@@ -44,11 +44,24 @@ namespace Dungeon
 
             {
 
-      
-            
-                option = _view.ShowMenu();
+                try
+                {
+                    option = _view.ShowMenu();
 
-                while(option != 1)
+
+                    while(!correctNumber(option))
+                    {
+                        option = _view.ShowMenu();
+                    }
+
+                }
+
+                catch (Exception e)
+                {
+                    _view.NewLineMessage(e.Message);
+                }
+            
+                
     
 
                 // Run the game loop
@@ -76,22 +89,13 @@ namespace Dungeon
                         _view.NewLineMessage("You quit the game");
                         break;
 
-
-                    case 5:
-                        _view.NewLineMessage("other action");
-                        break;
-
-                    case 6: 
-                        _view.NewLineMessage("other action 2");
-                        break;
-
-
                     default: 
                         {
                             _view.NewLineMessage("Invalid option");
 
                             // New Line
                             _view.NewLineMessage();
+
                             break;
                         }
 
@@ -107,15 +111,23 @@ namespace Dungeon
         /// </summary>
         private void Move()
         {
-            _view.LineMessage("Enter destination: ");
-
 
             string input = "";
+
+            _view.LineMessage("Enter destination: ");
 
 
             try
             {
                 input = _view.ReadInput();
+
+                input.ToUpper();
+
+                while(!correctDir(input))
+                {
+                    _view.LineMessage("Enter destination: ");
+                    input = _view.ReadInput();
+                }
             }
 
 
@@ -124,8 +136,6 @@ namespace Dungeon
                 _view.ErrorMessage(e.Message);
             }
 
-
-    
 
             if (_model.CanMove(input))
             {
@@ -155,9 +165,11 @@ namespace Dungeon
                 }
 
 
+                _view.NewLineMessage($"You moved {dir}");
+
                 _view.WaitForKey();
 
-                _view.NewLineMessage($"You moved {dir}");
+                _view.NewLineMessage();
 
                 _view.NewLineMessage(_model.NextRoomDescription());
             }
@@ -180,18 +192,34 @@ namespace Dungeon
         private void Attack()
         {
             _view.NewLineMessage("You attacked");
+            _view.NewLineMessage();
         }
 
 
         private void GetItem()
         {
-            _view.NewLineMessage("You used an item");
-
-            // ask model for items
-
             
+            string pick = _model.GetItem();
+
+            _view.NewLineMessage(pick);
+            
+            _view.NewLineMessage();
+
         }
 
+        private bool correctDir(string dir)
+        {
+            // TODO : Add chars
+            return dir == "A" || dir == "B" || dir == "C" || dir == "D";
+        }
+
+
+        private bool correctNumber(int number)
+        {
+            return number == 1 || number == 2 || number == 3 || number == 4;
+        }
+
+ 
     }
 
 
