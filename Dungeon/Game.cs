@@ -174,8 +174,8 @@ namespace Dungeon
                 _view.NewLineMessage(_model.NextRoomDescription());
             }
 
-            else { _view.NewLineMessage(
-                "Ability to cross walls only in DLC version. Choose a direction with a door"); }
+            // Call wrong passage message
+            _view.WrongPassageChoice(); 
             
         }
 
@@ -193,14 +193,16 @@ namespace Dungeon
         private void Attack()
         {
 
+            _model.CallPlayerAttack();
+
             _view.NewLineMessage("You successfully hit your enemy");
+
             _view.NewLineMessage();
         }
 
 
         private void GetItem()
         {
-
 
             _view.NewLineMessage("You used the chosen item");
 
@@ -210,7 +212,6 @@ namespace Dungeon
             _view.NewLineMessage(pick);
 
             _view.NewLineMessage();
-
         }
 
         private bool correctDir(string dir)
