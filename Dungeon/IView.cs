@@ -35,6 +35,12 @@ namespace Dungeon
 
 
         /// <summary>
+        /// 
+        /// </summary>
+        void WrongPassageChoice();
+
+
+        /// <summary>
         /// Interface method.
         /// Should be used to display a int message passed as parameter.
         /// </summary>

@@ -133,6 +133,15 @@ namespace Dungeon
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public void WrongPassageChoice()
+        {
+            Console.WriteLine("Ability to cross walls only in DLC version."
+            +" Choose a direction with a door");
+        }
+
+        /// <summary>
         /// Method displays a general Error Message
         /// </summary>
         /// <param name="message"></param>
