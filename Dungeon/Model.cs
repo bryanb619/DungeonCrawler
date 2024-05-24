@@ -95,6 +95,10 @@ namespace Dungeon
                     if (line.Contains("\t"))
                     {
                         // add details to room
+                        if (line.StartsWith("Description")) return;
+
+                        if (line.StartsWith("Description")) return;
+                   
                     }
 
                     else
