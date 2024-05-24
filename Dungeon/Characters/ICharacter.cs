@@ -33,5 +33,11 @@ namespace Dungeon.Characters
         /// <param name="amount"></param>
         void TakeDamage(int amount);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        bool Dead();
+
     }
 }
