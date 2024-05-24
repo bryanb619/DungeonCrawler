@@ -17,18 +17,16 @@
 ### Steven Hall 22001753
 
 - Código:
-  - Classes:
-    - Player
-    - Enemy
-    - Item
-    - HealthPotion
-    - Model
-    - Room
-    - Game
-    - View  
-    - Program
-  - Interfaces
-    - IView
+  - Player
+  - Enemy
+  - Item
+  - HealthPotion
+  - Model
+  - Room
+  - Game
+  - View  
+  - Program
+  - IView
   - _Bug fixing_
 - Relatório: 60.0%
 - UML: 50.0%
@@ -165,6 +163,9 @@ O único docente com quem foi entrado em contacto para discutir questões relaci
 - [Planeamente Geral de classes, enumeradores](https://www.youtube.com/watch?v=NUNlVjt82m8&t=738s)
 
 - [_Board class_](https://www.youtube.com/watch?v=Z1Zi41eiNGs&t=80s)
+  
 - [_Stream Reader_ exemplo](https://www.youtube.com/watch?v=tApBDuVwCrc)
+  
+- [StartsWith] (https://learn.microsoft.com/en-us/dotnet/api/system.string.startswith?view=netstandard-2.1#system-string-startswith(system-string))
 
 ---
