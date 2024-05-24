@@ -10,8 +10,11 @@
   - Items
   - Mapa
 - Código:
+  - View
+  - IView
+  - XML
   - *Bug fixing*
-- Relatório: 40.0%
+- Relatório: 70.0%
 - UML: 50.0%
 
 ### Steven Hall 22001753
@@ -23,18 +26,20 @@
   - Enemy
   - Item
   - HealthPotion
+  - TODO : implementar outra classe
   - Model
   - Room
   - Game
   - View  
   - IView
+  - XML
   - *Bug fixing*
-- Relatório: 60.0%
+- Relatório: 30.0%
 - UML: 50.0%
 
 ## Arquitetura da solução
 
-*Yet Another Dungeon Crawler*
+### *Yet Another Dungeon Crawler*
 
 ### Jogador
 
