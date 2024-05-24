@@ -35,19 +35,19 @@ namespace Dungeon.Characters
             throw new NotImplementedException();
         }
 
-        public void Move()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void PickUpItem(Item item)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="amount"></param>
         public void TakeDamage(int amount)
         {
-            throw new NotImplementedException();
+            if (Hp >= 0) Hp -= amount;
+ 
+        }
+
+        public bool Dead()
+        {
+            return Hp <= 0;
         }
     }
 }

@@ -67,10 +67,10 @@ namespace Dungeon
             string description = "some room", 
             Item item = null, 
             Enemy enemy = null, 
-            int i = 0)
+            int id = 0)
         {
 
-            _room[a] = new Room(description, item, enemy, i);
+            _room[a] = new Room(description, item, enemy, id);
             a++;
         }
 
@@ -118,12 +118,14 @@ namespace Dungeon
         /// <param name="exits"></param>
         /// <param name="item"></param>
         /// <param name="enemy"></param>
-        private void CreateRooms(string description, Item item, Enemy enemy)
+        private void CreateRooms(string description, Item item = null, 
+            Enemy enemy = null, int id = 0)
         {
 
-    
+            _room[a] = new Room(description, item, enemy, id);
+            a++;
         }
-
+    
 
         // ------------- Action methods from controller ------------------------
 
@@ -131,7 +133,11 @@ namespace Dungeon
 
         public void CallPlayerAttack()
         {
-            _player.Attack(_room[CurrentRoom].Enemy);
+            // check if enemy is !dead
+            if (!_room[CurrentRoom].Enemy.Dead()) 
+            { 
+                _player.Attack(_room[CurrentRoom].Enemy); 
+            }
         }
 
 
