@@ -138,24 +138,43 @@ namespace Dungeon
 
         // attack
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void StartBattle()
         {
-
-            while (!_room[CurrentRoom].Enemy.Dead() || !Player.Dead())
+            if(_room[CurrentRoom].Enemy != null)
             {
 
-                if (_turn % 2 == 0)
+                while (!_room[CurrentRoom].Enemy.Dead() || !Player.Dead())
                 {
-                    _player.Attack(_room[CurrentRoom].Enemy);
 
-                    _turn++;
+                    if (_turn % 2 == 0)
+                    {
+                        _player.Attack(_room[CurrentRoom].Enemy);
+                        _turn++;
+                    }
+                    else
+                    {
+                        _room[CurrentRoom].Enemy.Attack(Player);
+                        _turn++;
+                    }
                 }
-                else
-                {
-                    _room[CurrentRoom].Enemy.Attack(Player);
-                    _turn++;
-                }
+
+                _turn = 0;
+
             }
+        }
+
+        public string GetEnemyName()
+        {
+            return _room[CurrentRoom].Enemy.Name;
+        }
+        
+
+        public int GetEnemyHp()
+        {
+            return _room[CurrentRoom].Enemy.Hp;
         }
 
 
