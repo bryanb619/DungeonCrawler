@@ -7,7 +7,7 @@ namespace Dungeon.Characters
     public class Player : ICharacter
     {
 
-
+        private const int MAX_HEALTH = 10000;
         private int _hp; 
 
         /// <summary>
@@ -45,17 +45,13 @@ namespace Dungeon.Characters
         public Player(string name = "Player")
         {
             Name            = name;
-            _hp              = 10000;
+            _hp             = MAX_HEALTH;
             AttackPower     = 85;
         }
 
         public void Attack(ICharacter target)
         {
-
-            if(target != null)
-            {   
-                target.TakeDamage(AttackPower);
-            }
+            target.TakeDamage(AttackPower);
         }
 
 
@@ -92,12 +88,17 @@ namespace Dungeon.Characters
 
         public void Heal(int amount)
         {
-            _hp += amount;
+            if(_hp + amount < 10000)  _hp += amount;
         }
 
         public void TakeDamage(int amount)
         {
             Hp -= amount;
+        }
+
+        public bool Dead()
+        {
+            return Hp <= 0; 
         }
 
     }
