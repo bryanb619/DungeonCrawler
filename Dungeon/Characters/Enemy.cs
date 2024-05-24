@@ -15,8 +15,7 @@ namespace Dungeon.Characters
         public int Hp { get; set; }
 
         // Abstract property that represents enemy Attack Power
-        public  int AttackPower { get; set; }
-
+        public int AttackPower { get; set; }
         
         public Enemy(string name,int hp, int attackPower)
         {
@@ -25,15 +24,23 @@ namespace Dungeon.Characters
             AttackPower = attackPower;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="target"></param>
         public void Attack(ICharacter target)
         {
-            throw new NotImplementedException();
+            target.TakeDamage(AttackPower);
         }
 
         public void Heal(int amount)
         {
             throw new NotImplementedException();
         }
+
+
+
+
 
         /// <summary>
         /// 
