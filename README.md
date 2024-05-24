@@ -10,13 +10,15 @@
   - Items
   - Mapa
 - Código:
-  - _Bug fixing_
+  - *Bug fixing*
 - Relatório: 40.0%
 - UML: 50.0%
 
 ### Steven Hall 22001753
 
 - Código:
+  - Program
+  - ICharacter
   - Player
   - Enemy
   - Item
@@ -25,9 +27,8 @@
   - Room
   - Game
   - View  
-  - Program
   - IView
-  - _Bug fixing_
+  - *Bug fixing*
 - Relatório: 60.0%
 - UML: 50.0%
 
@@ -54,11 +55,12 @@
 - **Health Points:** 250
 - **Attack Power:** 130
 
-### Inimigo: Armog 
+### Inimigo: Armog
 
 - **Health Points:** 350
 - **Attack Power:** 100
-- 
+-
+
 ### Inimigo: Titan
 
 - **Health Points:** ?
@@ -76,12 +78,11 @@
 
 - **Status:** Adiciona permanentemente +5 Attack Power ao jogador
 
-
 ### Descrição da solução
 
-- Projeto desenvolvido utilizando a linguagem _C#_ 8.0 e [_.NET_](https://learn.microsoft.com/en-us/dotnet/api/?view=netstandard-2.1).
+- Projeto desenvolvido utilizando a linguagem *C#* 8.0 e [*.NET*](https://learn.microsoft.com/en-us/dotnet/api/?view=netstandard-2.1).
 
-### _UML_
+### *UML*
 
 ```mermaid
 
@@ -124,48 +125,48 @@ classDiagram
 
   O uso de IAs generativas foi usado e neste tópico explicaremos como:
 
-- Utilizamos o _Chat Bing_ que utiliza o (_Chat GPT-4_) foi utilizado para tirar dúvidas e explicar itens da [_API_](https://learn.microsoft.com/en-us/dotnet/api/?view=netstandard-2.1) de forma mais clara e para erros simples. Como também para ter exemplos e obter de forma mais rápida _links_ com código útil.
+- Utilizamos o *Chat Bing* que utiliza o (*Chat GPT-4*) foi utilizado para tirar dúvidas e explicar itens da [*API*](https://learn.microsoft.com/en-us/dotnet/api/?view=netstandard-2.1) de forma mais clara e para erros simples. Como também para ter exemplos e obter de forma mais rápida *links* com código útil.
 
 ### Consultas com docentes
   
 A Realização deste projeto consistiu essencialmente em pesquisa própria, conhecimento adquirido por trabalhos e ensino fornecido por proferessores em diversas unidades curriculares lecionadas na [licenciatura de Videojogos](https://www.ulusofona.pt/lisboa/licenciaturas/videojogos).
 
-O único docente com quem foi entrado em contacto para discutir questões relacionadas ao projeto, dúvidas, lógica e/ou eficiência do código foi ao professor Nuno Fachada relativamente a lógica de inicialização de salas, herança comum de personagens como _Player_ e _Enemy_ como também em relação a variáveis de suporte e sua respectiva utilidade. 
+O único docente com quem foi entrado em contacto para discutir questões relacionadas ao projeto, dúvidas, lógica e/ou eficiência do código foi ao professor Nuno Fachada relativamente a lógica de inicialização de salas, herança comum de personagens como *Player* e *Enemy* como também em relação a variáveis de suporte e sua respectiva utilidade.
 
-### _Links_ de pesquisa utilizados para realização do projeto
+### *Links* de pesquisa utilizados para realização do projeto
 
-- [_Getters & Setters_](https://www.w3schools.com/cs/cs_properties.php)
+- [*Getters & Setters*](https://www.w3schools.com/cs/cs_properties.php)
 
-- [_C# Arrays W3 Schools_](https://www.w3schools.com/cs/cs_arrays.php)
-- [_Tic Tac toe_ linhas, colunas e diagonal](https://www.c-sharpcorner.com/UploadFile/75a48f/tic-tac-toe-game-in-C-Sharp/)
+- [*C# Arrays W3 Schools*](https://www.w3schools.com/cs/cs_arrays.php)
+- [*Tic Tac toe* linhas, colunas e diagonal](https://www.c-sharpcorner.com/UploadFile/75a48f/tic-tac-toe-game-in-C-Sharp/)
 
 - [Unicode Symbols](https://symbl.cc/en/unicode-table/)
 - [Digrama UML Mermaid](https://mermaid.js.org/syntax/classDiagram.html)
 
-#### _API_
+#### *API*
 
-- [_Arrays & Multidimensional Arrays_](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays)
+- [*Arrays & Multidimensional Arrays*](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays)
 
-- [_Stream Reader & Error Handling_](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamreader?view=netstandard-2.1)
-- [_List_](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1?view=netstandard-2.1)
-- [_List .Select_](https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.select?view=netstandard-2.1)
-- [_PadRight(Int32)_](https://learn.microsoft.com/en-us/dotnet/api/system.string.padright?view=netstandard-2.1)
-- [_ANSI Color codes_](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
-- [_Envrionment.Exit(Int32)_](https://learn.microsoft.com/en-us/dotnet/api/system.environment.exit?view=netstandard-2.1)
-- [_Console.Clear()_](https://learn.microsoft.com/en-us/dotnet/api/system.console.clear?view=netstandard-2.1)
+- [*Stream Reader & Error Handling*](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamreader?view=netstandard-2.1)
+- [*List*](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1?view=netstandard-2.1)
+- [*List .Select*](https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.select?view=netstandard-2.1)
+- [*PadRight(Int32)*](https://learn.microsoft.com/en-us/dotnet/api/system.string.padright?view=netstandard-2.1)
+- [*ANSI Color codes*](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
+- [*Envrionment.Exit(Int32)*](https://learn.microsoft.com/en-us/dotnet/api/system.environment.exit?view=netstandard-2.1)
+- [*Console.Clear()*](https://learn.microsoft.com/en-us/dotnet/api/system.console.clear?view=netstandard-2.1)
 
-- [_string.Join()_](https://learn.microsoft.com/en-us/dotnet/api/system.string.join?view=netstandard-2.1#system-string-join(system-char-system-object()))
+- [*string.Join()*](https://learn.microsoft.com/en-us/dotnet/api/system.string.join?view=netstandard-2.1#system-string-join(system-char-system-object()))
   
-- [_String.Contains()_](https://learn.microsoft.com/en-us/dotnet/api/system.string.contains?view=netstandard-2.1#system-string-contains(system-char))
+- [*String.Contains()*](https://learn.microsoft.com/en-us/dotnet/api/system.string.contains?view=netstandard-2.1#system-string-contains(system-char))
 
-#### _Youtube_ (vídeos)
+#### *Youtube* (vídeos)
 
 - [Planeamente Geral de classes, enumeradores](https://www.youtube.com/watch?v=NUNlVjt82m8&t=738s)
 
-- [_Board class_](https://www.youtube.com/watch?v=Z1Zi41eiNGs&t=80s)
+- [*Board class*](https://www.youtube.com/watch?v=Z1Zi41eiNGs&t=80s)
   
-- [_Stream Reader_ exemplo](https://www.youtube.com/watch?v=tApBDuVwCrc)
+- [*Stream Reader* exemplo](https://www.youtube.com/watch?v=tApBDuVwCrc)
   
-- [StartsWith] (https://learn.microsoft.com/en-us/dotnet/api/system.string.startswith?view=netstandard-2.1#system-string-startswith(system-string))
+- [StartsWith] (<https://learn.microsoft.com/en-us/dotnet/api/system.string.startswith?view=netstandard-2.1#system-string-startswith(system-string)>)
 
 ---
