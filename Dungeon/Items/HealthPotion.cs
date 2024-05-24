@@ -19,7 +19,7 @@ namespace Dungeon.Items
         /// <param name="health">
         /// Value to be assigned to Health property (read-only)
         /// </param>
-        public HealthPotion(string name, int health = 250) : base (name)
+        public HealthPotion(string name, int health) : base (name)
         {
             Health = health;
         }

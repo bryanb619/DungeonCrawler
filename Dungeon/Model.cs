@@ -11,6 +11,7 @@ namespace Dungeon
 
         private Room[]  _room = new Room[15];
 
+
         private Player  _player;
         public Player Player => _player;
 
@@ -18,15 +19,17 @@ namespace Dungeon
 
         int a = 0;
 
+        private int _turn = 0;
+        public int Turn => _turn;
 
         public void GenerateGame()
         {
             
-            TestRooms("A dark Room", new HealthPotion("God's tear"), new Enemy("Chaos", 100, 10),0);
-            TestRooms("room1", new HealthPotion("God's tear"), new Enemy("Chaos", 100, 10),1);
-            TestRooms("room2", new HealthPotion("God's tear"), new Enemy("Titan", 200, 15),2);
-            TestRooms("Room3", new HealthPotion("God's tear"), new Enemy("Chaos", 100, 10),3);
-            TestRooms("Room3", new HealthPotion("God's tear"), new Enemy("Chaos", 100, 10),4);
+            TestRooms("A dark Room", new HealthPotion("Ivy's Flask", -150), new Enemy("Chaos", 100, 10),0);
+            TestRooms("room1", new HealthPotion("God's tear",250), new Enemy("Chaos", 100, 10),1);
+            TestRooms("room2", new HealthPotion("God's tear",250), new Enemy("Titan", 200, 15),2);
+            TestRooms("Room3", new HealthPotion("God's tear",250), new Enemy("Chaos", 100, 10),3);
+            TestRooms("Room3", new HealthPotion("God's tear",250), new Enemy("Chaos", 100, 10),4);
 
         
 
@@ -135,14 +138,26 @@ namespace Dungeon
 
         // attack
 
-        public void CallPlayerAttack()
+        public void StartBattle()
         {
-            // check if enemy is !dead
-            if (!_room[CurrentRoom].Enemy.Dead()) 
-            { 
-                _player.Attack(_room[CurrentRoom].Enemy); 
+
+            while (!_room[CurrentRoom].Enemy.Dead() || !Player.Dead())
+            {
+
+                if (_turn % 2 == 0)
+                {
+                    _player.Attack(_room[CurrentRoom].Enemy);
+
+                    _turn++;
+                }
+                else
+                {
+                    _room[CurrentRoom].Enemy.Attack(Player);
+                    _turn++;
+                }
             }
         }
+
 
 
         public string NextRoomDescription()
@@ -159,19 +174,32 @@ namespace Dungeon
 
                 Item item = _room[CurrentRoom].Item;
 
+                string info = "";
+
                 // player pick item
                 _player.PickUpItem(item);
 
-                if(item.GetType() == typeof(HealthPotion))
-                {
 
+                if(IsItemHealth(item))
+                {
                     HealthPotion healthPotion = (HealthPotion)item;
 
-                    return $"{item.Name} healed {healthPotion.Health}";
+                    if(healthPotion.Health < 0)
+                    {
+                        info = $"{item.Name} removed {healthPotion.Health} of your health";
+                    }
+
+                    else
+                    {
+                        info = $"{item.Name} healed {healthPotion.Health} of your health";
+                    }
                 }
 
                 // null this item
                 _room[CurrentRoom].Item = null;
+
+
+                return info;
 
             }
             
@@ -209,6 +237,12 @@ namespace Dungeon
             }
 
             return false;
+        }
+
+
+        private bool IsItemHealth(Item item)
+        {
+            return item.GetType() == typeof(HealthPotion);
         }
 
             
