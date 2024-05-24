@@ -1,0 +1,4 @@
+room1
+    directions: E
+    item: God's Tear +250
+    enemy: Chaos 150 75

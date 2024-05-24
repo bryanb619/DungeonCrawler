@@ -39,17 +39,21 @@ namespace Dungeon.Characters
         }
 
 
-
-
-
         /// <summary>
         /// 
         /// </summary>
         /// <param name="amount"></param>
         public void TakeDamage(int amount)
         {
-            if (Hp >= 0) Hp -= amount;
- 
+            Random rand = new Random();
+
+            int chanceOfSuccess = rand.Next(0, 10);
+
+            if (chanceOfSuccess == 0 && !Dead()) 
+            { 
+                Hp -= amount;
+
+            }
         }
 
         public bool Dead()

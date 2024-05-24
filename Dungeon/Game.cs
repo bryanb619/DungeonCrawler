@@ -31,12 +31,11 @@ namespace Dungeon
             _view = view;
 
             _model.GenerateGame();
+            _model.CreatePlayer();
 
             view.WelcomeMessage();
             
-            _model.CreatePlayer();
-
-
+            
             int option = 0;
 
 
@@ -91,14 +90,9 @@ namespace Dungeon
                         break;
 
                     default: 
-                        {
-                            _view.NewLineMessage("Invalid option");
-
-                            // New Line
-                            _view.NewLineMessage();
-
-                            break;
-                        }
+                        _view.NewLineMessage("Invalid option\n");
+                        break;
+                        
 
                 }
 
@@ -192,12 +186,50 @@ namespace Dungeon
 
         private void Attack()
         {
+            if(_model.Enemy != null)
+            {
+                _model.StartBattle();
+                
+                string choice = "";
 
-            _model.CallPlayerAttack();
+                if(_model.Turn % 2 == 0 )
+                {
+                    _view.NewLineMessage("Types of attack available\n"
+                    +"1.High attack\t2. Normal attack\t3. Low Attack");
+                    _view.LineMessage("Type of Attack :");
 
-            _view.NewLineMessage("You successfully hit your enemy");
+                    int attackChoice = int.Parse(_view.ReadInput());
 
-            _view.NewLineMessage();
+                    switch(attackChoice)
+                    {
+                        case 1:
+                            choice = "High";
+                            break;
+                        case 2:
+                            choice = "Normal";
+                            break;
+                        case 3: 
+                            choice = "Low";
+                            break;
+
+                        default : break;
+                    }
+
+
+                    _view.NewLineMessage("You successfully hit"
+                        +$" {_model.GetEnemyName()} with" 
+                        +$" {choice}\nEnemy Hp: {_model.GetEnemyHp()}\n");
+                }
+
+                // battle not over
+                //while("")
+                
+                //_model.
+
+    
+                    
+            }
+            _view.NewLineMessage("No enemy to attack\n");
         }
 
 

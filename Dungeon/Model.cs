@@ -15,6 +15,8 @@ namespace Dungeon
         private Player  _player;
         public Player Player => _player;
 
+        public Enemy Enemy { get; set; }
+
         private int     CurrentRoom = 0;
 
         int a = 0;
@@ -143,7 +145,11 @@ namespace Dungeon
         /// </summary>
         public void StartBattle()
         {
-            if(_room[CurrentRoom].Enemy != null)
+
+            Enemy = _room[CurrentRoom].Enemy;
+
+
+            if(Enemy != null)
             {
 
                 while (!_room[CurrentRoom].Enemy.Dead() || !Player.Dead())
@@ -170,7 +176,7 @@ namespace Dungeon
         {
             return _room[CurrentRoom].Enemy.Name;
         }
-        
+
 
         public int GetEnemyHp()
         {

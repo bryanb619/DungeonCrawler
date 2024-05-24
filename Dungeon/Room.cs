@@ -27,7 +27,7 @@ namespace Dungeon
         public Room(string description, Item item, Enemy enemy, int id)
         {
 
-            // string name, string description, List<Char> exits, Item item, Enemy enemy
+            // string name, string description, Item item, Enemy enemy
             Description     = description;
             Item            = item;
             Enemy           = enemy;
