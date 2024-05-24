@@ -133,7 +133,8 @@ namespace Dungeon
         }
 
         /// <summary>
-        /// 
+        /// Prints a message to indicate the player that he choose a path that
+        /// leads to a wall, asking the player to choose another direction.
         /// </summary>
         public void WrongPassageChoice()
         {
