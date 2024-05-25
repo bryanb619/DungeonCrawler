@@ -174,6 +174,4 @@ O único docente com quem foi entrado em contacto para discutir questões relaci
   
 - [*Stream Reader* exemplo](https://www.youtube.com/watch?v=tApBDuVwCrc)
   
-
-
 ---
