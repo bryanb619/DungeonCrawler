@@ -6,19 +6,17 @@ namespace Dungeon.Items
 {
     public class AttackPotion : Item
     {
-        public AttackPotion(string name) : base(name)
-        {
-            
-        }
 
-        public override void Interact()
+        public int AttackPower { get; }
+
+        public AttackPotion(string name, int damage) : base(name)
         {
-            throw new NotImplementedException();
+            AttackPower = damage;
         }
 
         public override int Use()
         {
-            throw new NotImplementedException();
+            return AttackPower;
         }
     }
 }

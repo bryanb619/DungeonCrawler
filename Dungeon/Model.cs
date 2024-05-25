@@ -190,22 +190,25 @@ namespace Dungeon
 
                     if(healthPotion.Health < 0)
                     {
-                        info = $"{item.Name} removed {healthPotion.Health} of your health"
-                        +$" Hp: {_player.Hp}";
-
+                        info = $"{item.Name} removed {healthPotion.Health}" 
+                        +$" of your health\nHp : {_player.Hp}";
+                         
                     }
 
                     else
                     {
-                        info = $"{item.Name} healed {healthPotion.Health} of your health"
-                        +$" Hp: {_player.Hp}";
+                        info = $"{item.Name} healed {healthPotion.Health}"
+                        + $" of your health\nHp : {_player.Hp}";
                     }
                 }
 
-                else if(IsItemAttack(item))
+                else if (IsItemAttack(item))
                 {
                     AttackPotion attackPotion = (AttackPotion)item;
 
+                    info = $"{item.Name} increased your attack power by"
+                    +$" {attackPotion.AttackPower}";
+                       
                 }
 
                 // null this item
@@ -249,7 +252,10 @@ namespace Dungeon
                 return true;
             }
 
-            return false;
+            else
+            {
+                return false;
+            }
         }
 
 
@@ -260,7 +266,7 @@ namespace Dungeon
 
         private bool IsItemAttack(Item item)
         {
-            return item.GetType() == typeof(HealthPotion);
+            return item.GetType() == typeof(AttackPotion);
         }
 
 

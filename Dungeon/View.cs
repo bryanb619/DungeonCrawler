@@ -114,6 +114,14 @@ namespace Dungeon
             Console.Write(message);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public void displayDirection()
+        {
+            Console.WriteLine("Directions: N. North, E. East, S. South, W. West");
+        }
+
 
         public string ReadInput()
         {

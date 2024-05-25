@@ -68,6 +68,9 @@ namespace Dungeon
         string ReadInput();
 
 
+        void displayDirection();
+
+
         /// <summary>
         /// Interface Method.
         /// Should be used to wait for a key to be pressed.

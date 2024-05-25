@@ -62,14 +62,19 @@ namespace Dungeon.Characters
         public void PickUpItem(Item item)
         {
 
-           
             if(item.GetType() == typeof(HealthPotion))
             {
                 
                 HealthPotion healthPotion = (HealthPotion)item;
 
                 Heal(healthPotion.Health);
+            }
 
+            else if(item.GetType() == typeof(AttackPotion))
+            {
+                AttackPotion attackPotion = (AttackPotion)item;
+
+                AttackPower += attackPotion.AttackPower;
             }
                 
         }

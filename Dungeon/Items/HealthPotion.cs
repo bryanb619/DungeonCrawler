@@ -24,15 +24,6 @@ namespace Dungeon.Items
             Health = health;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public override void Interact()
-        {
-            // TODO: Remove Console.WriteLine from this class as it violates MVC pattern
-            // TODO: Link with player class and increase player health
-            Console.WriteLine("You drink the health potion and gain " + Health + " health.");
-        }
 
         public override int Use()
         {

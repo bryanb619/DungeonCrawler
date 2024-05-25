@@ -110,6 +110,9 @@ namespace Dungeon
         /// </summary>
         private void Move()
         {
+
+            _view.displayDirection();
+
             _view.LineMessage("Which direction do you want to go? ");
 
 
@@ -119,7 +122,7 @@ namespace Dungeon
             {
                 input = _view.ReadInput();
 
-                input.ToUpper();
+                //input.ToUpper();
 
                 while(!correctDir(input))
                 {
@@ -174,8 +177,6 @@ namespace Dungeon
 
                 _view.NewLineMessage(_model.NextRoomDescription());
             }
-
-            _view.WrongPassageChoice();
         }
 
 
@@ -309,7 +310,7 @@ namespace Dungeon
         private bool correctDir(string dir)
         {
             // TODO : Add chars
-            return dir == "A" || dir == "B" || dir == "C" || dir == "D";
+            return dir == "A" || dir == "E" || dir == "W" || dir == "S";
         }
 
 
