@@ -7,7 +7,7 @@ namespace Dungeon.Characters
     public class Player : ICharacter
     {
 
-        private const int MAX_HEALTH = 10000;
+        private const int MAX_HEALTH = 1000;
         private int _hp; 
 
         /// <summary>

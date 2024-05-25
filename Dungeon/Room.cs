@@ -19,7 +19,7 @@ namespace Dungeon
 
         public Item Item { get; set; }
 
-        public Enemy Enemy { get; set; }
+        public Enemy Enemy { get; private set; }
 
         public int Id { get; }
 

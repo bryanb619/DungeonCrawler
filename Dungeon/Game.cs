@@ -186,7 +186,7 @@ namespace Dungeon
 
         private void Attack()
         {
-            if(_model.Enemy != null)
+            if(!_model.Agent.Dead() || _model.Agent!= null)
             {
                 _model.StartBattle();
                 
@@ -213,23 +213,31 @@ namespace Dungeon
                             break;
 
                         default : break;
+                    } 
+
+                    if(_model.Agent.SuccesfullAttack)
+                    {
+                        _view.NewLineMessage("You successfully hit"
+                            +$" {_model.GetEnemyName()} with" 
+                            +$" {choice}\nEnemy Hp: {_model.GetEnemyHp()}\n");
+                    }
+                        
+                    else
+                    {
+                        _view.NewLineMessage("You missed the attack\n");
                     }
 
-
-                    _view.NewLineMessage("You successfully hit"
-                        +$" {_model.GetEnemyName()} with" 
-                        +$" {choice}\nEnemy Hp: {_model.GetEnemyHp()}\n");
                 }
-
-                // battle not over
-                //while("")
-                
-                //_model.
-
-    
-                    
+        
             }
             _view.NewLineMessage("No enemy to attack\n");
+        }
+
+
+        private void GetStateOfAttack()
+        {
+            
+
         }
 
 

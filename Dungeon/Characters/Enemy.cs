@@ -16,8 +16,11 @@ namespace Dungeon.Characters
 
         // Abstract property that represents enemy Attack Power
         public int AttackPower { get; set; }
+
+
+        public bool SuccesfullAttack { get; private set; } 
         
-        public Enemy(string name,int hp, int attackPower)
+        public Enemy(string name, int hp, int attackPower)
         {
             Name        = name;
             Hp          = hp;
@@ -52,9 +55,16 @@ namespace Dungeon.Characters
             if (chanceOfSuccess == 0 && !Dead()) 
             { 
                 Hp -= amount;
-
+                SuccesfullAttack = true;
             }
+            
+            else
+            {
+                SuccesfullAttack = false;
+            }
+
         }
+
 
         public bool Dead()
         {
