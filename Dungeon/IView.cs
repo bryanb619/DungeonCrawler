@@ -68,6 +68,10 @@ namespace Dungeon
         string ReadInput();
 
 
+        /// <summary>
+        /// Method that prints the possible directions that the player can
+        /// choose: North, South, West and East.
+        /// </summary>
         void displayDirection();
 
 
@@ -89,8 +93,7 @@ namespace Dungeon
         /// Interface method.
         /// Should be used to display final message.
         /// </summary>
-        void EndMessage();
-        
+        void EndMessage(); 
         
     }
 }

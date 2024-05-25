@@ -61,7 +61,7 @@ namespace Dungeon
 
 
         /// <summary>
-        /// 
+        /// Method stores the items in the inventory
         /// </summary>
         /// <param name="inventory">It stores the items the player collected,
         /// displaying the number to access its and the name </param>
@@ -115,7 +115,8 @@ namespace Dungeon
         }
 
         /// <summary>
-        /// 
+        /// Prints the possible directions that the player can choose: North, 
+        /// South, West and East.
         /// </summary>
         public void displayDirection()
         {
@@ -123,6 +124,11 @@ namespace Dungeon
         }
 
 
+        /// <summary>
+        /// Method that obtains a Console.Readline, a string introduced by the
+        /// player.
+        /// </summary>
+        /// <returns>Returns the string inserted by the player</returns>
         public string ReadInput()
         {
             return Console.ReadLine();

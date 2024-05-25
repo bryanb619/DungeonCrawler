@@ -7,7 +7,9 @@ namespace Dungeon
 {
 
     /// <summary>
-    /// 
+    /// Method that has the information of each room such as the 
+    /// description, the rooms that are connected with the current room, the 
+    /// item if there's any, the enemy if there's any and the unique id number.
     /// </summary>
     public class Room
     {
@@ -24,6 +26,16 @@ namespace Dungeon
         public int Id { get; }
 
 
+        /// <summary>
+        /// Method that has the information of each room such as the 
+        /// description, the item if there's any, the enemy if there's any and
+        /// the unique id number.
+        /// </summary>
+        /// <param name="description">Description of the room the player
+        /// entered</param>
+        /// <param name="item">Description of item inside the room</param>
+        /// <param name="enemy">Enemy that is in the room</param>
+        /// <param name="id">Number that identifies the room</param>
         public Room(string description, Item item, Enemy enemy, int id)
         {
 
@@ -37,7 +49,6 @@ namespace Dungeon
 
         /// <summary>
         /// Method adds connections to a instance of room.
-        ///  
         /// </summary>
         /// <param name="exits">
         /// Must receive dictionary with string as key and Room as value of this
