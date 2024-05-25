@@ -6,7 +6,9 @@ namespace Dungeon.Characters
 {
     public class Player : ICharacter
     {
-        private int _hp = 1000; 
+
+
+        private int Max_Hp = 1000;
 
         /// <summary>
         /// Hp property for the Player
@@ -18,22 +20,9 @@ namespace Dungeon.Characters
         /// </value>
         public int Hp {
 
-            get { return _hp; }
+            get;
 
-
-            set {
-                    if(_hp + value > 10000)
-                    {
-                        _hp += 1000; 
-                    }
-
-                    else
-                    {
-                        _hp += value;
-                    }
-
-                }
-
+            set;
 
         }
 
@@ -55,7 +44,7 @@ namespace Dungeon.Characters
         public Player(string name = "Player")
         {
             Name            = name;
-            Hp              = _hp;
+            Hp              = Max_Hp;
 
             AttackPower     = 85;
         }
@@ -81,9 +70,6 @@ namespace Dungeon.Characters
 
                 Heal(healthPotion.Health);
 
-
-                Console.WriteLine(Hp);
-
             }
                 
         }
@@ -99,12 +85,16 @@ namespace Dungeon.Characters
 
         public void Heal(int amount)
         {
-            if(_hp + amount < 10000)  _hp += amount;
+            if (Hp + amount > Max_Hp) Hp = Max_Hp;
+
+            else Hp += amount;
         }
 
         public void TakeDamage(int amount)
         {
+            
             Hp -= amount;
+
         }
 
         public bool Dead()

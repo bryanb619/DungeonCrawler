@@ -34,24 +34,20 @@ namespace Dungeon
         public void Start(IView view)
         {
             bool quitGame = false;
+            int option = 0;
+
             _view = view;
+            view.WelcomeMessage();
 
             _model.GenerateGame();
             _model.CreatePlayer();
             _player = _model.Player;
 
-            view.WelcomeMessage();
-
-         
-            
-            
-            int option = 0;
-
+        
 
             do
 
             {
-
                 try
                 {
                     option = _view.ShowMenu();
@@ -70,8 +66,6 @@ namespace Dungeon
                 }
             
                 
-    
-
                 // Run the game loop
                 // Get the player input
 
@@ -129,6 +123,9 @@ namespace Dungeon
 
                 while(!correctDir(input))
                 {
+                    // Call wrong passage message
+                    _view.WrongPassageChoice(); 
+
                     _view.LineMessage("Enter destination: ");
                     input = _view.ReadInput();
                 }
@@ -178,9 +175,7 @@ namespace Dungeon
                 _view.NewLineMessage(_model.NextRoomDescription());
             }
 
-            // Call wrong passage message
-            _view.WrongPassageChoice(); 
-            
+            _view.WrongPassageChoice();
         }
 
 
@@ -189,16 +184,17 @@ namespace Dungeon
             Agent = _model.GetEnemy();
         
 
-            if(Agent == null || !Agent.Dead())
+            if(Agent != null)
             {
-                _view.NewLineMessage("No enemy to attack\n");
+                
+                _view.NewLineMessage("You are attacking an enemy\n");
+
+                BattleLoop();
             }
 
             else
             {
-                _view.NewLineMessage("You are attacking an enemy\n");
-
-                BattleLoop();
+                _view.NewLineMessage("No enemy to attack\n");
             }
            
         }
@@ -206,13 +202,16 @@ namespace Dungeon
         private void BattleLoop()
         {
 
-            while (!Agent.Dead() || !_player.Dead())
+            while (!Agent.Dead())
             {
                 string choice = "";
                 int attackChoice;
 
                 if (_model.Turn % 2 == 0)
-                {
+                {   
+
+                    _view.NewLineMessage("--- Your turn ---\n");
+
                     _view.NewLineMessage("Options are:\n"
                         +"1.High attack\t2. Normal attack\t3. Low Attack");
                     
@@ -238,36 +237,60 @@ namespace Dungeon
                         default : break;
                     }
 
-                    
                     if (Agent.SuccesfullAttack)
                     {
                         _view.NewLineMessage("You successfully hit"
                             +$" {Agent.Name} with" 
                             +$" {choice} attack\nEnemy Hp: {Agent.Hp}\n ");
-
-                        _model.UpdateBattle(Agent);
                     }
 
                     else if(!Agent.SuccesfullAttack)
                     {
                         _view.NewLineMessage("Ups, you missed the attack...\n");
 
-                        _model.UpdateBattle(Agent);
+                        
                     }
+
+                    _model.UpdateBattle(Agent);
+                    
                 }
 
                 else
                 {
 
+                    _view.NewLineMessage("--- Enemy turn ---\n");
+
                     Agent.Attack(_player);
 
-                    _view.NewLineMessage($"Enemy {Agent.Name} attacked you\n"
+                    if(Agent.PlayerSuccessAttack)
+                    {
+                        _view.NewLineMessage($"{Agent.Name} attacked you\n"
                         +$"Your Hp: {_player.Hp}\n");
+                    }
+                    else if(!Agent.PlayerSuccessAttack)
+                    {
+                        _view.NewLineMessage("Lucky you!" 
+                        +$" {Agent.Name} missed the attack\n");
+                    }
+                    
                     
                     _model.UpdateBattle(Agent);
                 }
+
+              
             }
 
+            if(Agent.Dead())
+            {
+                _view.NewLineMessage($"You defeated {Agent.Name}\n");
+            }
+
+            else if(_player.Dead())
+            {
+                _view.NewLineMessage($"You were defeated by {Agent.Name}\n");
+
+                _model.QuitGame();
+            }
         }
 
 
@@ -279,9 +302,8 @@ namespace Dungeon
             // ask model for items
             string pick = _model.GetItem();
 
-            _view.NewLineMessage(pick);
-
-            _view.NewLineMessage();
+            _view.NewLineMessage(pick +"\n");
+            
         }
 
         private bool correctDir(string dir)
@@ -295,11 +317,5 @@ namespace Dungeon
         {
             return number == 1 || number == 2 || number == 3 || number == 4;
         }
-
- 
     }
-
-
-
-    
 }

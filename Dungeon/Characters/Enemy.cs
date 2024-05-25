@@ -19,6 +19,8 @@ namespace Dungeon.Characters
 
 
         public bool SuccesfullAttack { get; private set; } 
+
+        public bool PlayerSuccessAttack { get; private set; } 
         
         public Enemy(string name, int hp, int attackPower)
         {
@@ -33,12 +35,24 @@ namespace Dungeon.Characters
         /// <param name="target"></param>
         public void Attack(ICharacter target)
         {
-            target.TakeDamage(AttackPower);
+            if (RandValue() >= 6) 
+            { 
+                target.TakeDamage(AttackPower);
+                PlayerSuccessAttack = true;
+            }
+                
+            else
+            {
+                PlayerSuccessAttack = false;
+            }
         }
 
         public void Heal(int amount)
         {
-            throw new NotImplementedException();
+           if (RandValue() > 9 && Hp < 100)
+           {
+                Hp += amount;
+           }
         }
 
 
@@ -48,14 +62,10 @@ namespace Dungeon.Characters
         /// <param name="amount"></param>
         public void TakeDamage(int amount)
         {
-            Random rand = new Random();
 
-            int chanceOfSuccess = rand.Next(0, 10);
-
-
-            if (chanceOfSuccess >= 4) 
+            if (RandValue() >= 1) 
             { 
-                this.Hp -= amount;
+                Hp -= amount;
                 SuccesfullAttack = true;
 
             }
@@ -63,15 +73,25 @@ namespace Dungeon.Characters
             else
             {
                 SuccesfullAttack = false;
-                Console.WriteLine(SuccesfullAttack );
             }
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private int RandValue()
+        {
+            Random rand = new Random();
+
+            return rand.Next(0, 10);
         }
 
 
         public bool Dead()
         {
-            return Hp >= 0;
+            return Hp <= 0;
         }
     }
 }

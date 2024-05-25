@@ -25,7 +25,7 @@ namespace Dungeon
         public void GenerateGame()
         {
             
-            TestRooms("A dark Room", new HealthPotion("Ivy's Flask", -150), new Enemy("Chaos", 100, 10),0);
+            TestRooms("A dark Room", new HealthPotion("Ivy's Flask", -150), new Enemy("Chaos", 250, 135),0);
             TestRooms("room1", new HealthPotion("God's tear",250), new Enemy("Chaos", 100, 10),1);
             TestRooms("room2", new HealthPotion("God's tear",250), new Enemy("Titan", 200, 15),2);
             TestRooms("Room3", new HealthPotion("God's tear",250), new Enemy("Chaos", 100, 10),3);
@@ -190,12 +190,15 @@ namespace Dungeon
 
                     if(healthPotion.Health < 0)
                     {
-                        info = $"{item.Name} removed {healthPotion.Health} of your health";
+                        info = $"{item.Name} removed {healthPotion.Health} of your health"
+                        +$" Hp: {_player.Hp}";
+
                     }
 
                     else
                     {
-                        info = $"{item.Name} healed {healthPotion.Health} of your health";
+                        info = $"{item.Name} healed {healthPotion.Health} of your health"
+                        +$" Hp: {_player.Hp}";
                     }
                 }
 
