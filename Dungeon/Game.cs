@@ -113,9 +113,13 @@ namespace Dungeon
         private void Move()
         {
 
+            Agent = _model.GetEnemy();
+
             _view.displayDirection();
 
             _view.LineMessage("Which direction do you want to go? ");
+
+
 
 
             string input = "";
@@ -143,7 +147,7 @@ namespace Dungeon
             }
 
 
-            if (_model.CanMove(input))
+            if (_model.CanMove(input) && Agent == null || Agent.Dead())
             {
 
                 string dir = ""; 
@@ -179,6 +183,8 @@ namespace Dungeon
 
                 _view.NewLineMessage(_model.NextRoomDescription());
             }
+
+            else{ _view.NewLineMessage("You must defeat your enemies...\n"); }
         }
 
 
