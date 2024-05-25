@@ -8,6 +8,7 @@ namespace Dungeon.Items
     {
         public AttackPotion(string name) : base(name)
         {
+            
         }
 
         public override void Interact()

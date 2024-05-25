@@ -52,15 +52,18 @@ namespace Dungeon.Characters
 
             int chanceOfSuccess = rand.Next(0, 10);
 
-            if (chanceOfSuccess == 0 && !Dead()) 
+
+            if (chanceOfSuccess >= 4) 
             { 
-                Hp -= amount;
+                this.Hp -= amount;
                 SuccesfullAttack = true;
+
             }
             
             else
             {
                 SuccesfullAttack = false;
+                Console.WriteLine(SuccesfullAttack );
             }
 
         }
@@ -68,7 +71,7 @@ namespace Dungeon.Characters
 
         public bool Dead()
         {
-            return Hp <= 0;
+            return Hp >= 0;
         }
     }
 }

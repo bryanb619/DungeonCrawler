@@ -149,25 +149,12 @@ namespace Dungeon
             {
                 _player.Attack(Agent);
                 Turn++;
-
             }
             else
             {
                 Agent.Attack(Player);
                 Turn++;
-
             }
-        }
-
-        public string GetEnemyName()
-        {
-            return _room[CurrentRoom].Enemy.Name;
-        }
-
-
-        public int GetEnemyHp()
-        {
-            return _room[CurrentRoom].Enemy.Hp;
         }
 
         public Enemy GetEnemy()
@@ -210,6 +197,12 @@ namespace Dungeon
                     {
                         info = $"{item.Name} healed {healthPotion.Health} of your health";
                     }
+                }
+
+                else if(IsItemAttack(item))
+                {
+                    AttackPotion attackPotion = (AttackPotion)item;
+
                 }
 
                 // null this item
@@ -260,6 +253,17 @@ namespace Dungeon
         private bool IsItemHealth(Item item)
         {
             return item.GetType() == typeof(HealthPotion);
+        }
+
+        private bool IsItemAttack(Item item)
+        {
+            return item.GetType() == typeof(HealthPotion);
+        }
+
+
+        public bool QuitGame()
+        {
+            return true;
         }
 
             

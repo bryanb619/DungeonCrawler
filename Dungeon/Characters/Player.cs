@@ -6,9 +6,7 @@ namespace Dungeon.Characters
 {
     public class Player : ICharacter
     {
-
-        private const int MAX_HEALTH = 1000;
-        private int _hp; 
+        private int _hp = 1000; 
 
         /// <summary>
         /// Hp property for the Player
@@ -23,7 +21,19 @@ namespace Dungeon.Characters
             get { return _hp; }
 
 
-            set { _hp += value; }
+            set {
+                    if(_hp + value > 10000)
+                    {
+                        _hp += 1000; 
+                    }
+
+                    else
+                    {
+                        _hp += value;
+                    }
+
+                }
+
 
         }
 
@@ -45,7 +55,8 @@ namespace Dungeon.Characters
         public Player(string name = "Player")
         {
             Name            = name;
-            _hp             = MAX_HEALTH;
+            Hp              = _hp;
+
             AttackPower     = 85;
         }
 
