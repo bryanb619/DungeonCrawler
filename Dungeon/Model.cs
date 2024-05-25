@@ -3,14 +3,13 @@ using System.IO;
 using System.Collections.Generic;
 using Dungeon.Items;
 using Dungeon.Characters;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Dungeon
 {
     public class Model
     {
 
-        private Room[]  _room = new Room[15];
+        private Room[]  _room = new Room[16];
 
 
         private Player  _player;
@@ -34,8 +33,6 @@ namespace Dungeon
 
             CreateRoom("room3", null, new Enemy("Traveler", 200, 15),        3);
 
-
-
             // going up!
             CreateRoom("room4", new HealthPotion("Ivy's Flask", -150), null, 4);
 
@@ -57,7 +54,6 @@ namespace Dungeon
 
             CreateRoom("Room11",new HealthPotion("God's tear",250), null,   11);
 
-
             // center to right (middle )
             CreateRoom("Room12", null, new Enemy("Traveler", 200, 15), 12);
 
@@ -66,10 +62,13 @@ namespace Dungeon
             CreateRoom("Room14", null, null, 14);
 
             CreateRoom("Room15", new HealthPotion("God's tear",250), 
-            new Enemy("Titan", 350, 100), 14);
+            new Enemy("Titan", 350, 100), 15);
 
-        
+            CreateConnections();
+        }
 
+        private void CreateConnections()
+        {
             _room[0].AddConnection(new Dictionary<string, Room> { 
                 { "E", _room[1] } });
 
@@ -94,7 +93,7 @@ namespace Dungeon
 
             _room[4].AddConnection(new Dictionary<string, Room> { 
                 { "W", _room[6] },
-                {"E",_room[7]} });
+                {"E", _room[7]} });
 
 
             _room[5].AddConnection(new Dictionary<string, Room> { 
@@ -160,19 +159,12 @@ namespace Dungeon
                 { "N", _room[6] },
                 { "S", _room[10] }
                 });
-        
-
-            foreach (Room room in _room)
-            {
-                //Console.WriteLine(room.Connections);
-            }
         }
 
 
-
-        public void CreatePlayer(string name = "Player")
+        public void CreatePlayer()
         {
-            _player = new Player(name);
+            _player = new Player();
         }
 
 
