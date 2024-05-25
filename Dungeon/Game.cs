@@ -1,4 +1,5 @@
 using System;
+using Dungeon.Characters;
 using System.Collections.Generic;
 
 
@@ -11,6 +12,11 @@ namespace Dungeon
 
         // Reference to the model
         private Model _model;
+
+
+        private Enemy Agent;
+
+        private Player _player;
 
         public Game(Model model)
         {
@@ -32,8 +38,11 @@ namespace Dungeon
 
             _model.GenerateGame();
             _model.CreatePlayer();
+            _player = _model.Player;
 
             view.WelcomeMessage();
+
+         
             
             
             int option = 0;
@@ -174,69 +183,50 @@ namespace Dungeon
         }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        private void NewRoom()
-        {
-            
-
-        }
-
-
         private void Attack()
         {
-            if(!_model.Agent.Dead() || _model.Agent!= null)
+            Agent = _model.GetEnemy();
+        
+
+            if(Agent == null || Agent.Dead())
             {
-                _model.StartBattle();
-                
-                string choice = "";
+                _view.NewLineMessage("No enemy to attack\n");
+            }
 
-                if(_model.Turn % 2 == 0 )
+            BattleLoop();
+        }
+
+        private void BattleLoop()
+        {
+            while (!Agent.Dead() || !_player.Dead())
+            {
+
+                if (_model.Turn % 2 == 0)
                 {
-                    _view.NewLineMessage("Types of attack available\n"
-                    +"1.High attack\t2. Normal attack\t3. Low Attack");
-                    _view.LineMessage("Type of Attack :");
+                    string choice = "";
+                    
+                    _player.Attack(Agent);
+                    _model.UpdateBattle(Agent);
 
-                    int attackChoice = int.Parse(_view.ReadInput());
-
-                    switch(attackChoice)
-                    {
-                        case 1:
-                            choice = "High";
-                            break;
-                        case 2:
-                            choice = "Normal";
-                            break;
-                        case 3: 
-                            choice = "Low";
-                            break;
-
-                        default : break;
-                    } 
-
-                    if(_model.Agent.SuccesfullAttack)
+                    if (Agent.SuccesfullAttack)
                     {
                         _view.NewLineMessage("You successfully hit"
                             +$" {_model.GetEnemyName()} with" 
-                            +$" {choice}\nEnemy Hp: {_model.GetEnemyHp()}\n");
+                            +$" {choice} attack\nEnemy Hp: {_model.GetEnemyHp()}\n ");
                     }
-                        
+                    
                     else
                     {
-                        _view.NewLineMessage("You missed the attack\n");
+                        _view.NewLineMessage("Ups, you missed the attack...\n");
                     }
-
                 }
-        
+                
+                else
+                {
+                    Agent.Attack(_player);
+                    _model.UpdateBattle(Agent);
+                }
             }
-            _view.NewLineMessage("No enemy to attack\n");
-        }
-
-
-        private void GetStateOfAttack()
-        {
-            
 
         }
 

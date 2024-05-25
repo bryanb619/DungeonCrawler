@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using Dungeon.Items;
 using Dungeon.Characters;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Dungeon
 {
@@ -15,14 +16,11 @@ namespace Dungeon
         private Player  _player;
         public Player Player => _player;
 
-        public Enemy Agent { get; private set; }
-
         private int     CurrentRoom = 0;
 
         int a = 0;
 
-        private int _turn = 0;
-        public int Turn => _turn;
+        public int Turn {get; private set;} = 0;
 
         public void GenerateGame()
         {
@@ -69,10 +67,10 @@ namespace Dungeon
 
 
         private void TestRooms(
-            string description = "some room", 
-            Item item = null, 
-            Enemy enemy = null, 
-            int id = 0)
+            string description, 
+            Item item, 
+            Enemy enemy, 
+            int id)
         {
 
             _room[a] = new Room(description, item, enemy, id);
@@ -134,7 +132,7 @@ namespace Dungeon
             _room[a] = new Room(description, item, enemy, id);
             a++;
         }
-    
+
 
         // ------------- Action methods from controller ------------------------
 
@@ -142,29 +140,23 @@ namespace Dungeon
 
         /// <summary>
         /// 
+        /// 
         /// </summary>
-        public void StartBattle()
+        public void UpdateBattle(Enemy Agent)
         {
 
-            Agent = _room[CurrentRoom].Enemy;
-
-
-            while (!Agent.Dead() || !Player.Dead())
+            if (Turn % 2 == 0)
             {
+                _player.Attack(Agent);
+                Turn++;
 
-                if (_turn % 2 == 0)
-                {
-                    _player.Attack(Agent);
-                    _turn++;
-                }
-                else
-                {
-                    Agent.Attack(Player);
-                    _turn++;
-                }
             }
+            else
+            {
+                Agent.Attack(Player);
+                Turn++;
 
-            _turn = 0;
+            }
         }
 
         public string GetEnemyName()
@@ -176,6 +168,11 @@ namespace Dungeon
         public int GetEnemyHp()
         {
             return _room[CurrentRoom].Enemy.Hp;
+        }
+
+        public Enemy GetEnemy()
+        {
+            return _room[CurrentRoom].Enemy;
         }
 
 
