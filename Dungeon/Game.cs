@@ -18,6 +18,8 @@ namespace Dungeon
 
         private Player _player;
 
+        private bool quitGame = false;
+
         public Game(Model model)
         {
             _model = model;
@@ -33,7 +35,7 @@ namespace Dungeon
         /// </param>
         public void Start(IView view)
         {
-            bool quitGame = false;
+
             int option = 0;
 
             _view = view;
@@ -45,9 +47,12 @@ namespace Dungeon
 
         
 
-            do
-
+            while (!quitGame)
             {
+
+                if(_player.Dead()) break;
+           
+
                 try
                 {
                     option = _view.ShowMenu();
@@ -96,11 +101,8 @@ namespace Dungeon
                     default: 
                         _view.NewLineMessage("Invalid option\n");
                         break;
-                        
-
                 }
-
-            } while (!quitGame);
+            } 
         }
 
 
@@ -111,9 +113,13 @@ namespace Dungeon
         private void Move()
         {
 
+            Agent = _model.GetEnemy();
+
             _view.displayDirection();
 
             _view.LineMessage("Which direction do you want to go? ");
+
+
 
 
             string input = "";
@@ -141,7 +147,7 @@ namespace Dungeon
             }
 
 
-            if (_model.CanMove(input))
+            if (_model.CanMove(input) && Agent == null || Agent.Dead())
             {
 
                 string dir = ""; 
@@ -177,6 +183,8 @@ namespace Dungeon
 
                 _view.NewLineMessage(_model.NextRoomDescription());
             }
+
+            else{ _view.NewLineMessage("You must defeat your enemies...\n"); }
         }
 
 
@@ -203,82 +211,101 @@ namespace Dungeon
         private void BattleLoop()
         {
 
+
             while (!Agent.Dead())
             {
                 string choice = "";
                 int attackChoice;
 
-                if (_model.Turn % 2 == 0)
-                {   
 
-                    _view.NewLineMessage("--- Your turn ---\n");
-
-                    _view.NewLineMessage("Options are:\n"
-                        +"1.High attack\t2. Normal attack\t3. Low Attack");
-                    
-                    _view.LineMessage("Option :");
-
-                    attackChoice = int.Parse(_view.ReadInput());
-    
-                    
-                    switch(attackChoice)
-                    {
-                        case 1:
-                            choice = "High";
-                            break;
-
-                        case 2:
-                            choice = "Normal";
-                            break;
-
-                        case 3: 
-                            choice = "Low";
-                            break;
-
-                        default : break;
-                    }
-
-                    if (Agent.SuccesfullAttack)
-                    {
-                        _view.NewLineMessage("You successfully hit"
-                            +$" {Agent.Name} with" 
-                            +$" {choice} attack\nEnemy Hp: {Agent.Hp}\n ");
-                    }
-
-                    else if(!Agent.SuccesfullAttack)
-                    {
-                        _view.NewLineMessage("Ups, you missed the attack...\n");
-
-                        
-                    }
-
-                    _model.UpdateBattle(Agent);
-                    
+                if(_player.Dead())
+                {
+                    _view.NewLineMessage($"You were defeated by {Agent.Name}\n");
+                    break;
                 }
+
 
                 else
                 {
+                
+                    if (_model.Turn % 2 == 0)
+                    {   
 
-                    _view.NewLineMessage("--- Enemy turn ---\n");
+                    
 
-                    Agent.Attack(_player);
+                        _view.NewLineMessage("--- Your turn ---\n");
 
-                    if(Agent.PlayerSuccessAttack)
-                    {
-                        _view.NewLineMessage($"{Agent.Name} attacked you\n"
-                        +$"Your Hp: {_player.Hp}\n");
+                        _view.NewLineMessage("Options are:\n"
+                            +"1.High attack\t2. Normal attack\t3. Low Attack");
+                        
+                        _view.LineMessage("Option :");
+
+                        attackChoice = int.Parse(_view.ReadInput());
+        
+                        
+                        switch(attackChoice)
+                        {
+                            case 1:
+                                choice = "High";
+                                break;
+
+                            case 2:
+                                choice = "Normal";
+                                break;
+
+                            case 3: 
+                                choice = "Low";
+                                break;
+
+                            case 4:
+                                _view.NewLineMessage("DEBUG KILL PLAYER");
+                                _player.Hp = 0;
+                                break;
+
+                            default : break;
+                        }
+
+                        if (Agent.SuccesfullAttack)
+                        {
+                            _view.NewLineMessage("You successfully hit"
+                                +$" {Agent.Name} with" 
+                                +$" {choice} attack\nEnemy Hp: {Agent.Hp}\n ");
+                        }
+
+                        else if(!Agent.SuccesfullAttack)
+                        {
+                            _view.NewLineMessage("Ups, you missed the attack...\n");
+
+                            
+                        }
+
+                        _model.UpdateBattle(Agent);
+                        
                     }
-                    else if(!Agent.PlayerSuccessAttack)
+
+                    else
                     {
-                        _view.NewLineMessage("Lucky you!" 
-                        +$" {Agent.Name} missed the attack\n");
-                    }
+
+                        _view.NewLineMessage("--- Enemy turn ---\n");
+
+                        Agent.Attack(_player);
+
+                        if(Agent.PlayerSuccessAttack)
+                        {
+                            _view.NewLineMessage($"{Agent.Name} attacked you\n"
+                            +$"Your Hp: {_player.Hp}\n");
+                        }
+                        else if(!Agent.PlayerSuccessAttack)
+                        {
+                            _view.NewLineMessage("Lucky you!" 
+                            +$" {Agent.Name} missed the attack\n");
+                        }
                     
                     
-                    _model.UpdateBattle(Agent);
+                        _model.UpdateBattle(Agent);
+                    }
                 }
-
-              
+        
             }
 
             if(Agent.Dead())
@@ -288,8 +315,7 @@ namespace Dungeon
 
             else if(_player.Dead())
             {
-                _view.NewLineMessage($"You were defeated by {Agent.Name}\n");
-
+            
                 _model.QuitGame();
             }
         }
