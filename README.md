@@ -85,8 +85,10 @@
 
 ### Descrição da solução
 
-- Projeto desenvolvido utilizando a linguagem *C#* 8.0 e [*.NET*](https://learn.microsoft.com/en-us/dotnet/api/?view=netstandard-2.1).
+Este projeto centra-se no desenvolvimento de um videojogo do genero *Dungeon Crawl* em consola, para ser realizado, foi utilizado a linguagem *C#* 8.0 e [*.NET Standard 2.1*](https://learn.microsoft.com/en-us/dotnet/api/?view=netstandard-2.1) que permitiu a criação de um simples jogo, onde é possível exploração de diferente salas, utilizar itens e combater inimigos.
 
+### Mapa
+  
 ![Map](./Map/YetAnotherDungeonCrawlerMap.png)
 
 ### *UML*
