@@ -33,19 +33,15 @@ namespace Dungeon.Characters
         /// <value></value>
         public int AttackPower { get ; set; }
 
-        public string Name { get; }
-
         public int PlayerPos { get; private set; } = 0;
 
 
         /// <summary>
         /// Constructor for the Traveler Enemy
         /// </summary>
-        public Player(string name = "Player")
+        public Player()
         {
-            Name            = name;
             Hp              = Max_Hp;
-
             AttackPower     = 85;
         }
 
