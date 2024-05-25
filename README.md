@@ -14,7 +14,7 @@
   - IView
   - XML
   - *Bug fixing*
-- Relatório: 70.0%
+- Relatório: 80.0%
 - UML: 50.0%
 
 ### Steven Hall 22001753
@@ -34,7 +34,7 @@
   - IView
   - XML
   - *Bug fixing*
-- Relatório: 30.0%
+- Relatório: 20.0%
 - UML: 50.0%
 
 ## Arquitetura da solução
@@ -87,6 +87,8 @@
 
 - Projeto desenvolvido utilizando a linguagem *C#* 8.0 e [*.NET*](https://learn.microsoft.com/en-us/dotnet/api/?view=netstandard-2.1).
 
+![Map](./Map/YetAnotherDungeonCrawlerMap.png)
+
 ### *UML*
 
 ```mermaid
@@ -109,10 +111,8 @@ classDiagram
   View              <--    Program 
 
   Item              <|--     HealthPotion
-  Item              <|--     OtherPotion  
-  Item              <|--     OtherPotion2  
+  Item              <|--     AttackPotion  
 
-  
   class Item 
   <<abstract>> Item 
 
@@ -163,6 +163,8 @@ O único docente com quem foi entrado em contacto para discutir questões relaci
 - [*string.Join()*](https://learn.microsoft.com/en-us/dotnet/api/system.string.join?view=netstandard-2.1#system-string-join(system-char-system-object()))
   
 - [*String.Contains()*](https://learn.microsoft.com/en-us/dotnet/api/system.string.contains?view=netstandard-2.1#system-string-contains(system-char))
+  
+- [*StartsWith*](<https://learn.microsoft.com/en-us/dotnet/api/system.string.startswith?view=netstandard-2.1#system-string-startswith(system-string)>)
 
 #### *Youtube* (vídeos)
 
@@ -172,6 +174,6 @@ O único docente com quem foi entrado em contacto para discutir questões relaci
   
 - [*Stream Reader* exemplo](https://www.youtube.com/watch?v=tApBDuVwCrc)
   
-- [StartsWith] (<https://learn.microsoft.com/en-us/dotnet/api/system.string.startswith?view=netstandard-2.1#system-string-startswith(system-string)>)
+
 
 ---
