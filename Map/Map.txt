@@ -1,4 +1,24 @@
 room1
     directions: E
-    item: God's Tear +250
+    item: Heretic Rage +5 AT
     enemy: Chaos 150 75
+
+    room2
+    directions: E
+    item: 
+    enemy:
+
+    room3
+    directions: E
+    item: God's Tear +250 HP
+    enemy:
+
+    room4
+    directions: N, S, E
+    item: 
+    enemy: Traveler
+
+    room5
+    directions: N, S
+    item: Ivy's Flask -150 HP
+    enemy: 

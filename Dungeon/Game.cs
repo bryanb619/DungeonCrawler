@@ -108,7 +108,9 @@ namespace Dungeon
 
 
         /// <summary>
-        /// 
+        /// Method verifies if there's an enemy in the current room. If there is
+        /// the player first has to defeat it. The direction where the player
+        /// wants to move will be asked.
         /// </summary>
         private void Move()
         {
@@ -188,6 +190,12 @@ namespace Dungeon
         }
 
 
+        /// <summary>
+        /// This method attacks the enemy that is in the room. If there's an 
+        /// enemy, it will perform an attack turn on the enemy. A message will 
+        /// warn the player saying there is no enemy in the room if that's the
+        /// case.
+        /// </summary>
         private void Attack()
         {
             Agent = _model.GetEnemy();
@@ -208,6 +216,10 @@ namespace Dungeon
            
         }
 
+        /// <summary>
+        /// Method contains a while loop that continues until the player or the
+        /// enemy is defeated. The player can choose between 3 different attacks
+        /// </summary>
         private void BattleLoop()
         {
 
@@ -236,7 +248,7 @@ namespace Dungeon
                         _view.NewLineMessage("--- Your turn ---\n");
 
                         _view.NewLineMessage("Options are:\n"
-                            +"1.High attack\t2. Normal attack\t3. Low Attack");
+                            +"1.Heavy Sword attack\t2. Normal attack\t3. Bow Attack");
                         
                         _view.LineMessage("Option :");
 
@@ -246,7 +258,7 @@ namespace Dungeon
                         switch(attackChoice)
                         {
                             case 1:
-                                choice = "High";
+                                choice = "Heavy Sword";
                                 break;
 
                             case 2:
@@ -254,7 +266,7 @@ namespace Dungeon
                                 break;
 
                             case 3: 
-                                choice = "Low";
+                                choice = "Bow";
                                 break;
 
                             case 4:
@@ -321,6 +333,10 @@ namespace Dungeon
         }
 
 
+        /// <summary>
+        /// Method prints a message to inform the player the use of the chosen
+        /// item.
+        /// </summary>
         private void GetItem()
         {
 
@@ -333,13 +349,25 @@ namespace Dungeon
             
         }
 
+        /// <summary>
+        /// Method associates and links the chars inserted to the direction that
+        /// the player wants to move (N: North; E: East, W: West, S: South)
+        /// </summary>
+        /// <param name="dir"></param>
+        /// <returns>Returns the char that corresponds to a direction</returns>
         private bool correctDir(string dir)
         {
             // TODO : Add chars
-            return dir == "A" || dir == "E" || dir == "W" || dir == "S";
+            return dir == "N" || dir == "E" || dir == "W" || dir == "S";
         }
 
 
+        /// <summary>
+        /// Method associates a number with the direction selected (N = 1; 
+        /// E = 2; W = 3; S = 4)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns>Returns the int that corresponds to a direction</returns>
         private bool correctNumber(int number)
         {
             return number == 1 || number == 2 || number == 3 || number == 4;
