@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Collections.Generic;
 using Dungeon.Items;
@@ -8,12 +7,10 @@ namespace Dungeon
 {
     public class Model
     {
-
         private Room[]  _room = new Room[16];
 
-
         private Player  _player;
-        public Player Player => _player;
+        public Player   Player => _player;
 
         private int     CurrentRoom = 0;
 
@@ -25,7 +22,7 @@ namespace Dungeon
         {
             
             // Starting from left 
-            CreateRoom("room0", new AttackPotion("Heretic Rage", 5), null ,  0);
+            CreateRoom("room0", new AttackPotion("Heretic Rage", 5), new Enemy("Titan", 50, 125) ,  0);
 
             CreateRoom("room1", null, null ,                                 1);
 
@@ -44,7 +41,6 @@ namespace Dungeon
 
             CreateRoom("Room7", new AttackPotion("Heretic Rage", 5), null,   7);
 
-
             // bottom rows
             CreateRoom("Room8", new HealthPotion("Ivy's Flask", -150), null, 8);
 
@@ -54,6 +50,7 @@ namespace Dungeon
 
             CreateRoom("Room11",new HealthPotion("God's tear",250), null,   11);
 
+
             // center to right (middle )
             CreateRoom("Room12", null, new Enemy("Traveler", 200, 15), 12);
 
@@ -62,7 +59,7 @@ namespace Dungeon
             CreateRoom("Room14", null, null, 14);
 
             CreateRoom("Room15", new HealthPotion("God's tear",250), 
-            new Enemy("Titan", 350, 100), 15);
+            new Enemy("Titan", 500, 125), 15);
 
             CreateConnections();
         }
@@ -372,24 +369,9 @@ namespace Dungeon
             return item.GetType() == typeof(AttackPotion);
         }
 
-
         public bool QuitGame()
         {
             return true;
         }
-
-            
-        public bool GameOver()
-        {
-            if (_player.Dead())
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-    
-
     }
 }

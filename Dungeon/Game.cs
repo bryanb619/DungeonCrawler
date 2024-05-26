@@ -13,7 +13,6 @@ namespace Dungeon
         // Reference to the model
         private Model _model;
 
-
         private Enemy Agent;
 
         private Player _player;
@@ -51,8 +50,9 @@ namespace Dungeon
             {
 
                 if(_player.Dead()) break;
-           
 
+
+            
                 try
                 {
                     option = _view.ShowMenu();
@@ -224,7 +224,15 @@ namespace Dungeon
                     break;
                 }
 
+                if(Agent.Name == "Titan" && Agent.Dead())
+                {   
+                   
+                    _view.NewLineMessage("Wow, you have defeated the Titan\n");
+                    quitGame = _model.QuitGame();
+                    break;
+                } 
 
+              
                 else
                 {
                 
