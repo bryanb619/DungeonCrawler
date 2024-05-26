@@ -1,6 +1,5 @@
 using System;
 using Dungeon.Characters;
-using System.Collections.Generic;
 
 
 namespace Dungeon
@@ -51,8 +50,8 @@ namespace Dungeon
 
                 if(_player.Dead()) break;
 
+                if(Agent.Name == "Titan" && Agent.Dead()) break;
 
-            
                 try
                 {
                     option = _view.ShowMenu();
