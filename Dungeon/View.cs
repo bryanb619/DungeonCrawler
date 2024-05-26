@@ -51,6 +51,7 @@ namespace Dungeon
             Console.WriteLine("2. Attack");
             Console.WriteLine("3. Use Item");
             Console.WriteLine("4. Quit Game");
+            Console.WriteLine("5. Dev Mode");
 
             Console.Write("Choose your next action: ");
 
@@ -58,34 +59,6 @@ namespace Dungeon
             return Convert.ToInt32(Console.ReadLine());
           
         }
-
-
-        /// <summary>
-        /// Method stores the items in the inventory
-        /// </summary>
-        /// <param name="inventory">It stores the items the player collected,
-        /// displaying the number to access its and the name </param>
-        /// <returns>
-        /// Returns an int that will be used to access the item
-        /// </returns>
-        public int ShowInventory(List<Item> inventory)
-        {
-            Console.WriteLine("Things you stole, I mean: Inventory: ");
-
-            int i = 1;
-
-            foreach (Item item in inventory)
-            {
-                Console.WriteLine($"{i}. {item.Name}");
-                i++;
-            }
-
-            Console.Write("Pick an item to use: ");
-
-            return Convert.ToInt32(Console.ReadLine());
-        }
-
-
 
         /// <summary>
         /// Received and displays a message of type string passed as a parameter.
@@ -178,7 +151,22 @@ namespace Dungeon
                 "You're not very good at dungeon crawling are you...");
         }
 
+        public int ShowInventory(List<Item> inventory)
+        {
+            throw new NotImplementedException();
+        }
 
-        
+        public int DevOption()
+        {   
+            Console.WriteLine("---- Debug ----\n");
+            Console.WriteLine("Dev Options");
+            Console.WriteLine("1. Heal Player: 100Hp");
+            Console.WriteLine("2. Kill enemy");
+            Console.WriteLine("3. Kill Player");
+            Console.WriteLine("4. Skip to Boss Room");
+            Console.Write("Choose your option: ");
+
+            return int.Parse(Console.ReadLine());
+        }
     }
 }

@@ -89,6 +89,9 @@ namespace Dungeon
         void ErrorMessage(string message);
 
 
+        int DevOption();
+
+
         /// <summary>
         /// Interface method.
         /// Should be used to display final message.

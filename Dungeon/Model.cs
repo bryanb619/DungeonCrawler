@@ -66,6 +66,7 @@ namespace Dungeon
 
         private void CreateConnections()
         {
+            // tile tou adicionar 
             _room[0].AddConnection(new Dictionary<string, Room> { 
                 { "E", _room[1] } });
 
@@ -322,6 +323,11 @@ namespace Dungeon
          
 
             return "Nothing here...";
+        }
+
+        public void DevMode()
+        {
+            
         }
 
 

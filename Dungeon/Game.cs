@@ -50,8 +50,9 @@ namespace Dungeon
 
                 if(_player.Dead()) break;
 
-                if(Agent.Name == "Titan" && Agent.Dead()) break;
+                if(quitGame == true) break;
 
+              
                 try
                 {
                     option = _view.ShowMenu();
@@ -95,6 +96,11 @@ namespace Dungeon
                         quitGame = _model.QuitGame();
                         _view.NewLineMessage(
                             "Wow, exiting the dungeon like this huh?");
+                        break;
+
+                    case 5:
+                        _view.NewLineMessage("Dev mode activated\n");
+                        DevMode();
                         break;
 
                     default: 
@@ -232,25 +238,14 @@ namespace Dungeon
                 if(_player.Dead())
                 {
                     _view.NewLineMessage($"You were defeated by {Agent.Name}\n");
+                    quitGame = true;
                     break;
                 }
-
-                if(Agent.Name == "Titan" && Agent.Dead())
-                {   
-                   
-                    _view.NewLineMessage("Wow, you have defeated the Titan\n");
-                    quitGame = _model.QuitGame();
-                    break;
-                } 
-
-              
                 else
                 {
                 
                     if (_model.Turn % 2 == 0)
                     {   
-
-                    
 
                         _view.NewLineMessage("--- Your turn ---\n");
 
@@ -327,16 +322,30 @@ namespace Dungeon
         
             }
 
-            if(Agent.Dead())
+            if(Agent.Dead() && Agent.Name != "Titan")
             {
                 _view.NewLineMessage($"You defeated {Agent.Name}\n");
             }
 
-            else if(_player.Dead())
+
+            if(_player.Dead())
             {
-            
-                _model.QuitGame();
+                quitGame = _model.QuitGame();
+                _view.NewLineMessage("You were defeated\n");
+                _view.EndMessage();
             }
+
+            if(Agent.Name == "Titan" && Agent.Dead())
+            {   
+                
+                _view.NewLineMessage("Wow, you have defeated the Titan");
+                _view.NewLineMessage("Congratulations\nThe quest is over");
+
+                quitGame = _model.QuitGame();
+      
+            } 
+
+           
         }
 
 
@@ -354,6 +363,73 @@ namespace Dungeon
 
             _view.NewLineMessage(pick +"\n");
             
+        }
+
+
+        private void DevMode()
+        {   
+            int option = 0;
+
+            try
+            {
+                _view.NewLineMessage("Dev mode activated\n");
+
+                option = _view.DevOption();
+
+                while(!correctNumber(option))
+                {
+                    option = _view.DevOption();
+                }
+            
+            }
+
+            catch(Exception e)
+            {
+                _view.ErrorMessage(e.Message);
+            }
+
+            
+            switch(option)
+            {
+                case 1:
+                    _view.NewLineMessage("You have chosen to heal");
+                    _model.Player.Heal(100);
+
+                    _view.NewLineMessage($"You healed 100\nHp: {_player.Hp}");
+                    break;
+
+                case 2:
+                    _view.NewLineMessage("You have chosen to kill the enemy");
+
+                    if(Agent != null && !Agent.Dead())
+                    {
+                        Agent.Hp = 0;
+                    } 
+
+                    else
+                    {
+                        _view.NewLineMessage("No enemy to kill");
+                    }
+
+                    break;
+
+                case 3:
+                    _view.NewLineMessage("You have chosen to kill the player");
+                    _model.Player.Hp = 0;
+                    break;
+
+                case 4:
+                    _view.NewLineMessage("You have chosen to skip to final room");
+                    break;
+
+                case 5:
+                    _view.NewLineMessage("Return to game\n");
+                    _view.NewLineMessage("---- End Of Debug ----\n");
+                    break;
+
+                default: break;
+            }
+
         }
 
         /// <summary>
@@ -377,7 +453,8 @@ namespace Dungeon
         /// <returns>Returns the int that corresponds to a direction</returns>
         private bool correctNumber(int number)
         {
-            return number == 1 || number == 2 || number == 3 || number == 4;
+            return number == 1 || number == 2 || 
+            number == 3 || number == 4 || number == 5;
         }
     }
 }
