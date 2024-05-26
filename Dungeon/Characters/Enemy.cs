@@ -28,7 +28,7 @@ namespace Dungeon.Characters
         }
 
         /// <summary>
-        /// 
+        /// Accepts an ICharacter object as a parameter and attacks it 
         /// </summary>
         /// <param name="target"></param>
         public void Attack(ICharacter target)
@@ -44,15 +44,6 @@ namespace Dungeon.Characters
                 PlayerSuccessAttack = false;
             }
         }
-
-        public void Heal(int amount)
-        {
-           if (RandValue() > 9 && Hp < 100)
-           {
-                Hp += amount;
-           }
-        }
-
 
         /// <summary>
         /// 
