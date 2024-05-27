@@ -22,7 +22,7 @@ namespace Dungeon
         {
             
             // Starting from left 
-            CreateRoom("room0", new AttackPotion("Heretic Rage", 5), new Enemy("Titan", 50, 125) ,  0);
+            CreateRoom("room0", new AttackPotion("Heretic Rage", 5), null,  0);
 
             CreateRoom("room1", null, null ,                                 1);
 
